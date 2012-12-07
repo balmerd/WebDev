@@ -1,8 +1,5 @@
 <!doctype html>
-<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>			<html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!-->	<html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,7 +17,9 @@
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,700italic">
 	<link rel="stylesheet" href="css/style.css?v=1">
 
-	<script src="js/modernizr-2.5.3.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
 
@@ -33,8 +32,7 @@
 		<button name="patterns" data-url="views/patterns/index.htm">Patterns</button>
 		<button name="techniques" data-url="views/techniques/index.htm">Techniques</button>
 		<button name="projects" data-url="views/projects/index.htm">Projects</button>
-		<button name="docs">Docs</button>
-		<button name="ebooks">eBooks</button>
+		<button name="reference" data-url="views/reference/index.htm">Reference</button>
 	</nav>
 
 	<section role="main" class="content">
@@ -125,47 +123,21 @@
 			</nav>
 			<div class="content"></div>
 		</article>
-		<article class="docs hidden">
-			<ul class="references">
-				<li><a target="_blank" href="Docs/JavasScript%20Object%20Model%20Diagram.docx" title="SEE: \\OAK-storage\users\David Balmer\_Traffic\DOCS">511Traffic JavasScript Object Model Diagram</a></li>
-				<li><a target="_blank" href="Docs/Traffic%20Web%20Redesign%20Javascript%20Architecture%20v1.3.DOCX" title="SEE: \\OAK-storage\users\David Balmer\_Traffic\DOCS">Traffic Web Redesign Javascript Architecture</a></li>
-				<li><a target="_blank" href="Docs/Additional%20Camera%20Sources%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/Camera Utilities/TrafficLandUpdate/TrafficLandService/Documentation">Additional Camera Sources</a></li>
-				<li><a target="_blank" href="Docs/TrafficLand%20Update%20Service%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/Camera Utilities/TrafficLandUpdate/TrafficLandService/Documentation">TrafficLand Update Service</a></li>
-				<li><a target="_blank" href="Docs/Add%20CMS%20Sign%20Content%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/CMS Update/CMSUpdateService/Documentation">Add CMS Sign Content</a></li>
-				<li><a target="_blank" href="Docs/Static%20Map%20Service%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/StaticMap/StaticMapService/Documentation">Static Map Service</a></li>
-				<li><a target="_blank" href="Docs/Static%20Map%20Mobile%20Service%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/StaticMapMobile/StaticMapMobileService/Documentation">Static Map Mobile Service</a></li>
-				<li><a target="_blank" href="Docs/511Traffic%20Admin%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/Traffic 2.0 Admin/511TrafficAdmin/Documentation">Traffic Admin site for Alerts and Promos</a></li>
-				<li><a target="_blank" href="Docs/Amazon%20Web%20Services%20Deployment.DOCX">Amazon Web Services Deployment</a></li>
-			</ul>
-		</article>
-		<article class="ebooks hidden">
-			<a target="_blank" href="eBooks/sencha-touch-102-coursebook-full.pdf" title="Fast Track to Sencha Touch"  >
-				<img src="images/eBooks/fast-track-to-sencha-touch.jpg" />
-			</a>
-			<a target="_blank" href="eBooks/CSharp-in-Depth.pdf" title="C# in Depth">
-				<img src="images/eBooks/csharp-in-depth.jpg" />
-			</a>
-			<a target="_blank" href="eBooks/Pro-ASP-NET-4-in-CSharp-2010-Fourth-Edition.pdf" title="Pro ASP.NET 4 in C#2010, 4th Edition">
-				<img src="images/eBooks/pro-asp-net-4-csharp.jpg" />
-			</a>
-			<a target="_blank" href="eBooks/Pro-ASP-NET-MVC-2-Framework-2nd-Edition.pdf" title="Pro ASP.NET MVC 2 Framework, 2nd Edition">
-				<img src="images/eBooks/pro-asp-net-mvc-2-framework.jpg" />
-			</a>
-			<a target="_blank" href="eBooks/jQuery-in-Action-Second-Edition.pdf" title="jQuery in Action, 2nd Edition">
-				<img src="images/eBooks/jquery-in-action.jpg" />
-			</a>
-			<a target="_blank" href="eBooks/jQuery-Mobile-Web-Development-Essentials.pdf" title="jQuery Mobile Web Development Essentials">
-				<img src="images/eBooks/jquery-mobile-web-development-essentials.jpg" />
-			</a>
-			<a target="_blank" href="eBooks/Master-Mobile-Web-Apps-with-jQuery-Mobile.pdf" title="Master Mobile Web Apps with jQuery Mobile">
-				<img src="images/eBooks/master-mobile-web-apps-with-jquery.jpg" />
-			</a>
-			<a target="_blank" href="eBooks/OpenLayers-2.10.pdf" title="OpenLayers 2.10 Beginners Guide">
-				<img src="images/eBooks/openlayers-beginners-guide.jpg" />
-			</a>
-			<a target="_blank" href="eBooks/OpenLayers-Cookbook.pdf" title="OpenLayers Cookbook">
-				<img src="images/eBooks/openlayers-cookbook.jpg" />
-			</a>
+		<article class="reference hidden">
+			<nav role="navigation" class="side">
+				<button name="ebooks" data-url="views/reference/index.htm">eBooks</button>
+				<button name="javascript" data-url="views/reference/javascript.htm">JavaScript</button>
+				<button name="aspnet-mvc" data-url="views/reference/aspnet-mvc.htm">ASP.NET MVC</button>
+				<button name="html5-css3" data-url="views/reference/html5-css3.htm">HTML5 and CSS3</button>
+				<button name="csharp-dot-net" data-url="views/reference/csharp-dot-net.htm">C# and .NET</button>
+				<button name="cloud" data-url="views/reference/cloud.htm">Cloud Computing</button>
+				<button name="iis" data-url="views/reference/iis.htm">IIS</button>
+				<button name="security" data-url="views/reference/security.htm">Security</button>
+				<button name="silverlight" data-url="views/reference/silverlight.htm">Silverlight</button>
+				<button name="misc" data-url="views/reference/misc.htm">Miscellaneous</button>
+				<button name="docs" data-url="views/reference/docs.htm">Docs</button>
+			</nav>
+			<div class="content"></div>
 		</article>
 	</section>
 
@@ -250,13 +222,22 @@
 							contentReady.call(this);
 						});
 						break;
-					case 'DOCS':
-						$('header span').text('~ Docs');
-						$('article.docs').removeClass('hidden');
-						break;
+					case 'REFERENCE':
 					case 'EBOOKS':
-						$('header span').text('~ eBooks');
-						$('article.ebooks').removeClass('hidden');
+					case 'JAVASCRIPT':
+					case 'ASPNET-MVC':
+					case 'HTML5-CSS3':
+					case 'CSHARP-DOT-NET':
+					case 'CLOUD':
+					case 'IIS':
+					case 'SECURITY':
+					case 'SILVERLIGHT':
+					case 'MISC':
+					case 'DOCS':
+						$('article.reference div.content').load(contentUrl, function() {
+							$('header span').text('~ Reference');
+							contentReady.call(this);
+						});
 						break;
 					default : 
 						$('header span').text('');
