@@ -27,7 +27,6 @@
 
 	<nav role="navigation" class="top clearfix">
 		<button name="home">Home</button>
-		<button name="tools">Tools</button>
 		<button name="widgets" data-url="views/widgets/index.htm">Widgets</button>
 		<button name="patterns" data-url="views/patterns/index.htm">Patterns</button>
 		<button name="techniques" data-url="views/techniques/index.htm">Techniques</button>
@@ -70,18 +69,6 @@
 				<a class="button" target="_blank" href="http://trafficweb3.511.org/Areas/Parking/testframe.htm">Parking Unit Tests</a>
 				<a class="button" target="_blank" href="http://trafficadmin3.511.org">Traffic Admin (legacy)</a>
 			</fieldset>
-		</article>
-		<article class="tools hidden">
-			<ul class="references">
-				<li><a target="_blank" href="http://jslint.com/">JS Lint</a> (code quality tool for JavaScript)</li>
-				<li><a target="_blank" href="http://jshint.com/">JS Hint</a> (a version of JS Lint with additional options)</li>
-				<li><a target="_blank" href="http://csslint.net/">CSS Lint</a> (code quality tool for CSS)</li>
-				<li><a target="_blank" href="http://jsonlint.com/">JSON Lint</a> (code quality tool for JSON, makes JSON/JSONP readable)</li>
-				<li><a target="_blank" href="http://jsbeautifier.org/">JS Beautifier</a> (beautify, unpack or deobfuscate JavaScript and HTML, make JSON/JSONP readable, etc.)</li>
-				<li><a target="_blank" href="http://www.tareeinternet.com/scripts/unescape.html">Unescape</a> (handy for decoding cookie values)</li>
-				<li><a target="_blank" href="http://lipsum.com">lipsum.com</a> (lorem ipsum generator)</li>
-				<li><a target="_blank" href="http://lorempixel.com/">lorempixel.com</a> (random placeholder image generator)</li>
-			</ul>
 		</article>
 		<article class="widgets hidden">
 			<nav role="navigation" class="side clearfix">
@@ -136,6 +123,7 @@
 				<button name="silverlight" data-url="views/reference/silverlight.htm">Silverlight</button>
 				<button name="misc" data-url="views/reference/misc.htm">Miscellaneous</button>
 				<button name="docs" data-url="views/reference/docs.htm">Docs</button>
+				<button name="tools" data-url="views/reference/tools.htm">Tools</button>
 			</nav>
 			<div class="content"></div>
 		</article>
@@ -183,10 +171,6 @@
 				$('article').addClass('hidden').find('div.content').empty();
 
 				switch (selection.toUpperCase()) {
-					case 'TOOLS':
-						$('header span').text('~ Tools');
-						$('article.tools').removeClass('hidden');
-						break;
 					case 'WIDGETS':
 						$('article.widgets div.content').load(contentUrl, function() {
 							$('header span').text('~ Widgets');
@@ -223,6 +207,7 @@
 						});
 						break;
 					case 'REFERENCE':
+					case 'TOOLS':
 					case 'EBOOKS':
 					case 'JAVASCRIPT':
 					case 'ASPNET-MVC':
