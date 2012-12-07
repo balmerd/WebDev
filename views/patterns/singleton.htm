@@ -1,0 +1,29 @@
+﻿<p>
+	The singleton pattern is what you use when you want to ensure that only one instance of an object is ever created.
+</p>
+<p>
+	See: <a href="http://www.klauskomenda.com/code/javascript-programming-patterns/" target="_blank">http://www.klauskomenda.com/code/javascript-programming-patterns/</a>
+</p>
+
+<div class="caption">Code:</div>
+<pre>
+var obj = {
+	Property: 123,
+	Method: function() {
+		console.log(this.Property);
+	}
+};
+
+obj.Method();
+</pre>
+
+<div class="caption">Console Output:</div>
+<pre>
+123
+</pre>
+
+<div class="caption"><span class="pro">Pros</span> and <span class="con">Cons</span> of this technique:</div>
+<ul>
+	<li class="pro">No constructor or "new" required</li>
+	<li class="con">All properties and methods are public</li>
+</ul>

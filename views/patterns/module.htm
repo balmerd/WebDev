@@ -1,0 +1,33 @@
+﻿<p>
+	Something about the module pattern...
+</p>
+
+<div class="caption">Code:</div>
+<pre>
+var obj = (function() {
+	var privateProperty = 2;
+	var privateMethod = function() {
+		console.log('private');
+	};
+	return  {
+		PublicProperty: 123,
+		PublicMethod: function () {
+			console.log(this.PublicProperty * privateProperty);
+		}
+	};
+
+}()); // execute the anonymous function a.k.a. "self-instantiation"
+
+obj.PublicMethod();
+</pre>
+
+<div class="caption">Console Output:</div>
+<pre>
+246
+</pre>
+
+<div class="caption"><span class="pro">Pros</span> and <span class="con">Cons</span> of this technique:</div>
+<ul>
+	<li class="pro">tbd</li>
+	<li class="con">tbd</li>
+</ul>

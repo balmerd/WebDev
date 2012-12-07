@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>  
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Windows Service Dashboard</title>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/flick/jquery-ui.css" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:400,500">
+	<style type="text/css">
+		html, body {
+			font-family: 'UbuntuLight', Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			height: 100%; /* http://stackoverflow.com/questions/325273/make-iframe-to-fit-100-of-containers-remaining-height */
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			color: #FFF;
+			background-color: #0073EA; /* same background color as active buttons */
+			font-size: 1.5em;
+			padding: 0.25em;
+		}
+		iframe {
+			border: none;
+			width: 100%;
+			height: 100%;
+		}
+		input {
+			display: none; /* so we don't see buttons before they are styled */
+		}
+		nav {
+			float: left;
+			width: 8em;
+			padding: 0.5em 0 0.25em 0.5em;
+		}
+		nav input {
+			width: 8em; /* same as nav width */
+			margin-bottom: 0.5em;
+		}
+		section.main {
+			height: 94%; /* so it fits within page without vscrollbar */
+			width: auto; /* so it expands to fit iframe content */
+			padding: 0.5em 0.25em;
+			margin-left: 8.25em; /* nav width plus */
+		}
+		/* jQuery UI mods here */
+		.ui-widget { font-family: inherit; font-size: inherit; }
+	</style>
+</head>
+<body>
+	<header>Windows Service Dashboard</header>
+	<nav>
+		<input type="button" value="CMS" data-url="file:///C:/Traffic/TI%20511-Web/CMS%20Update/CMSUpdateService/CMSUpdate.html">
+		<input type="button" value="StaticMap" data-url="file:///C:/Traffic/TI%20511-Web/StaticMap/StaticMapService/staticmap.html">
+		<input type="button" value="MobileMap1" data-url="file:///C:/Traffic/TI%20511-Web/StaticMapMobile\StaticMapMobileService/StaticMapMobile.html">
+		<input type="button" value="MobileMap2" data-url="file:///C:/Traffic/TI%20511-Web/StaticMapMobile\StaticMapMobileService/StaticMapMobilePage.html">
+		<input type="button" value="TrafficLand" data-url="file:///C:/Traffic/TI%20511-Web/Camera%20Utilities/TrafficLandUpdate/TrafficLandService/trafficland.html">
+		<input type="button" value="WebMonitor" data-url="file:///C:/Traffic/TI%20511-Web/WebMonitor/WebMonitorService/servicechecker.html">
+	</nav>
+	<section class="main">
+		<iframe></iframe>
+	</section>
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			// create button, set click handler, and show it
+			$('input:button').button().click(function() {
+				$('iframe').attr('src', $(this).attr('data-url'));
+			}).show();
+
+			setTimeout(function() { // show TrafficLand by default
+				$('input:button:eq(0)').trigger('click');
+			}, 100);
+
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+body { font-family: Arial, Helvetica, sans-serif; font-size: 12px; padding: 1em; }
+
+.copyright { font-size: smaller; margin-top: 1em; display: none; }
+.red-text { color: Red; }
+.green-text { color: Green; }
+
+table.trip-header { margin-bottom: 1em; width: 400px; font-size: 0.95em; }
+table.trip-header td { padding: 0 5px; }
+
+table.trip-summary { margin-top: 1em; width: 400px; }
+table.trip-summary tr.header { background-color: #EEE; }
+table.trip-summary tr.ember-view { cursor: pointer; }
+table.trip-summary tr.is-active { background-color: #008; color: #FFF; }
+table.trip-summary th { padding: 5px; text-align: left; }
+table.trip-summary td { border-collapse: collapse; border: 1px solid #EEE; padding: 5px; }
+
+table.trip-details { margin-top: 1em; width: 400px; }
+table.trip-details tr.header { background-color: #EEE; }
+table.trip-details th { padding: 5px; text-align: left; }
+table.trip-details td { border-collapse: collapse; border: 1px solid #EEE; padding: 5px; }

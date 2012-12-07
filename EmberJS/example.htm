@@ -1,0 +1,77 @@
+﻿<!doctype html>
+<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->	<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>511 Traffic Beta MVC</title>
+	<meta name="description" content="Testing Ember.js mvc library.">
+	<meta name="author" content="david.b.balmer@saic.com">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+	<link rel="stylesheet" href="../css/html5-boilerplate.css" />
+	<link rel="stylesheet" href="css/style.css?v=1">
+
+	<style>
+		#example {
+			width: 20em;
+			font-size: 14px;
+			border: 1px solid #000;
+		}
+		#example header {
+			padding: 0.25em;
+			color: #FFF;
+			background-color: #008;
+			font-weight: bold;
+		}
+		#example table {
+			width: 100%;
+			border: 1px solid #EEE;
+			border-collapse: collapse;
+		}
+		#example tr, #example td {
+			border: 1px solid #EEE;
+		}
+		#example tr.hover {
+			background-color: #EFF;
+		}
+		#example footer {
+			padding: 0.25em;
+			background-color: #EEE;
+			font-size: 0.85em;
+			text-align: right;
+		}
+	</style>
+
+	<script src="../js/modernizr-2.5.3.min.js"></script>
+</head>
+<body>
+
+<script type="text/x-handlebars" data-template-name="exampleModule">
+	<header>Example Header</header>
+	<table>
+	{{#each content}}
+		<tr>
+			<td>{{location}}</td>
+			<td>{{activity}}</td>
+		</tr>
+	{{/each}}
+	</table>
+	<footer class="collapsible">footer here</footer>
+</script>
+
+<div id="example"></div>
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="../js/handlebars-1.0.0.beta.6.js"></script>
+<script src="../js/ember-1.0.0-pre.2.min.js"></script>
+<script src="js/example.js"></script>
+</body>
+</html>

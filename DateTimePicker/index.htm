@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date and Time Picker Demo</title>
+	<style type="text/css">
+		body { font-size: .85em; font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif; margin: 0; padding: 0; color: #696969; }
+		.page { width: 90%; margin-left: auto; margin-right: auto; }		
+		.ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
+		.ui-timepicker-div dl{ text-align: left; }
+		.ui-timepicker-div dl dt{ height: 25px; }
+		.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+		.ui-timepicker-div td { font-size: 90%; }
+	</style>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/flick/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+	<script src="js/timepicker.js"></script>
+	<script src="js/detect_timezone.js"></script>
+	<script>
+		var DateTimePickerController = function() {
+
+			var currentDate;
+			var previousHour;
+			var timeSelector;
+			var dateSelector;
+
+			var dateFormat;
+			var dateTimeValue;
+			var isSameDay = true;
+			var onSelectCallback;
+
+			function formatDateString(d) {
+				return $.datepicker.formatDate(dateFormat, d);
+			}
+
+			function formatTimeString(hour, minute) {
+				return (hour + ":" + (minute < 10 ? ("0" + minute) : minute));
+			}
+
+			function getLocalTimeAsPST() {
+				// modified from http://www.techrepublic.com/article/convert-the-local-time-to-another-time-zone-with-this-javascript/6016329
+				var pstTimeZoneOffset = parseFloat("-08:00");
+				var localTimeZoneOffset = parseFloat(jstz.determine_timezone().timezone.utc_offset);
+				var d = new Date();
+				var utc = d.getTime();
+				return new Date(utc + (3600000 * (pstTimeZoneOffset - localTimeZoneOffset)));
+			}
+
+			function getCurrentDate() {
+				var _now = getLocalTimeAsPST();
+				var _day = _now.getDate();
+				var _month = _now.getMonth();
+				var _year = _now.getFullYear();
+				var _hour = _now.getHours();
+				var _minute = _now.getMinutes();
+				_now.setSeconds(0);
+				return {
+					day: _day,
+					month: _month,
+					year: _year,
+					hour: _hour,
+					minute: _minute,
+					dateString: function() { return formatDateString(_now); },
+					timeString: function() { return formatTimeString(_hour, _minute); },
+					zeroMinutesAndSeconds: function() { return new Date(_year, _month, _day, _hour, 0, 0, 0); },
+					value: function() { return new Date(_now); } // using a function so we don't return a mutable reference to currentDate._now
+				};
+			}
+
+			function createDatePicker(options) {
+				var settings = $.extend({
+					onSelect: dateSelected,
+					onClose: pickerClosed
+				}, options);
+				$(dateSelector).datepicker(settings);
+			}
+
+			function createTimePicker(options) {
+				var settings = $.extend({
+					onSelect: timeSelected,
+					onClose: pickerClosed
+				}, options);
+				$(timeSelector).timepicker(settings);
+			}
+
+			function reCreateTimePicker(options) {
+				if (options && options.timeChanged) {
+					$(timeSelector).timepicker("hide");
+					$(timeSelector).timepicker("destroy");
+					createTimePicker(options);
+					$(timeSelector).timepicker("show");
+				} else { // day changed
+					$(timeSelector).timepicker("destroy");
+					createTimePicker(options);
+				}
+			}
+
+			function dateSelected(dateText, obj) {
+				dateTimeValue.setDate(obj.selectedDay);
+				dateTimeValue.setMonth(obj.selectedMonth);
+				dateTimeValue.setFullYear(obj.selectedYear);
+
+				if (timeSelector) {
+					if (obj.selectedDay == currentDate.day && obj.selectedMonth == currentDate.month && obj.selectedYear == currentDate.year) {
+						isSameDay = true;
+						if ((dateTimeValue.getHours() < currentDate.hour) || (dateTimeValue.getMinutes() < currentDate.minute)) {
+							dateTimeValue.setHours(currentDate.hour);
+							dateTimeValue.setMinutes(currentDate.minute);
+							$(timeSelector).val(formatTimeString(currentDate.hour, currentDate.minute));
+						}
+						reCreateTimePicker({ minDate: currentDate.value() });
+					} else { // different day, so no minDate
+						isSameDay = false;
+						reCreateTimePicker();
+					}
+				}
+
+				if (onSelectCallback) {
+					onSelectCallback(dateTimeValue);
+				}
+			}
+
+			function timeSelected(timeText, obj) {
+				var newMinDate;
+
+				dateTimeValue.setHours(obj.hour);
+				dateTimeValue.setMinutes(obj.minute);
+
+				if (isSameDay) {
+					if (obj.hour !== previousHour) {
+						$(timeSelector).timepicker("hide");
+						if (obj.hour === currentDate.hour) {
+							newMinDate = currentDate.value();
+							$(timeSelector).timepicker("setTime", currentDate.value());
+						} else {
+							newMinDate = currentDate.zeroMinutesAndSeconds();
+						}
+						reCreateTimePicker({ timeChanged: true,  minDate: newMinDate });
+					}
+				}
+
+				previousHour = obj.hour;
+
+				if (onSelectCallback) {
+					onSelectCallback(dateTimeValue);
+				}
+			}
+
+			function pickerClosed() {
+				if (onSelectCallback) {
+					onSelectCallback(dateTimeValue);
+				}
+			};
+
+			return {
+				Create: function(options) {
+
+					currentDate = getCurrentDate();
+					dateTimeValue = getCurrentDate().value();
+					previousHour = currentDate.hour;
+
+					if (typeof options.OnSelect == "function") {
+						onSelectCallback = options.OnSelect;
+					}
+
+					if (options.DateSelector) {
+						dateFormat = options.DateFormat;
+						dateSelector = options.DateSelector;
+						$(dateSelector).val(currentDate.dateString());
+
+						createDatePicker({
+							dateFormat: options.DateFormat,
+							minDate: currentDate.value()
+						});
+					}
+
+					if (options.TimeSelector) {
+						timeSelector = options.TimeSelector;
+						$(timeSelector).val(currentDate.timeString());
+
+						createTimePicker({
+							minDate: currentDate.value()
+						});
+					}
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+    <div class="page">
+		<p>Date: <input id="datepicker" type="text" style="width:15em;" /></p>
+		<p>Time: <input id="timepicker" type="text" style="width:15em;" /> (PST)</p>
+    </div>
+	<script type="text/javascript">
+		$(function() {
+			var picker = new DateTimePickerController();
+			picker.Create({
+				DateFormat: "DD mm/dd/yy",
+				DateSelector: "#datepicker",
+				TimeSelector: "#timepicker",
+				OnSelect: function(d) {
+					console.info(d.toLocaleString());
+				}
+			});
+		});
+	</script>
+</body>
+</html>

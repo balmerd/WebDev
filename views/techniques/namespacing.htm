@@ -1,0 +1,50 @@
+﻿<p>
+	In order to reduce the number of objects and functions that are added to the global scope in our applications, using namespaces in JavaScript is definitely a recommended practice.
+</p>
+<p>
+	Namespaces don't have any dedicated syntax built into the language, but we can create a single global object and add properties (objects) and methods (functions) to this object.
+</p>
+
+<div class="caption">Code:</div>
+<pre>
+function registerNamespace(ns) {
+	var i, root = window;
+	var nsParts = ns.split('.');
+	for (i = 0; i < nsParts.length; i++) {
+		if (typeof root[nsParts[i]] === 'undefined') {
+			root[nsParts[i]] = {};
+		}
+		root = root[nsParts[i]];
+	}
+}
+</pre>
+</div>
+
+<div class="caption">Usage:</div>
+<pre>
+registerNamespace('SAIC.Util.SomeObject');
+
+// will create the following object with SAIC as a global variable:
+
+SAIC = {
+	Util: {
+		SomeObject: {
+		}
+	}
+}
+
+// then you can write:
+
+SAIC.Util.SomeObject.SomeMethod = function() {
+	console.log('ok');
+};
+
+// if SAIC.Util.SomeObject or part of the namespace is already defined, that part will not be changed
+</pre>
+
+<div class="caption"><span class="pro">Pros</span> and <span class="con">Cons</span> of this technique:</div>
+<ul>
+	<li class="con">Namespace creation function is global in this example</li>
+	<li class="pro">Organize your code without creating too many global variables</li>
+	<li class="con">More typing :-( but can be offset by using namespace aliases within methods</li>
+</ul>

@@ -1,0 +1,89 @@
+﻿<p>
+	The StringBuilder provides methods similar to C#
+</p>
+
+<div class="caption">Code:</div>
+<div class="stickie hidden"></div>
+<pre>
+SAIC.Util.StringBuilder = function(string) {
+	var i;
+	var buffer = [];
+	if (arguments[0]) {
+		buffer.push(string);
+	}
+	this.Append = function() {
+		for (i = 0; i < arguments.length; i++) {
+			buffer.push(arguments[i]);
+		}
+		return this; // enables chaining
+	};
+	this.AppendFormat = function(/*format, values*/) {
+		// depends on String.prototype.format
+		var args = [];
+		var str = arguments[0] || '';
+		for (i = 1; i < arguments.length; i++) {
+			args.push(arguments[i]);
+		}
+		buffer.push(str.format.apply(str, args));
+		return this;
+	};
+	this.AppendLine = function(string) {
+		buffer.push('\r\n' + string);
+		return this;
+	};
+	this.Length = function() {
+		return this.toString().length;
+	};
+	this.toString = function() {
+		return buffer.join('');
+	};
+};
+</pre>
+</div>
+
+<div class="caption">Depends on:</div>
+<div class="stickie">
+	<b>String.prototype.format.cache</b> is a form of function <b>"memoization"</b> where all unique RegExp objects created are cached for re-use.
+</div>
+<pre>
+String.prototype.format = function() {
+	var i, re, s = this;
+	if (!String.prototype.format.cache) {
+		String.prototype.format.cache = {};
+	}
+	for (i = 0; i < arguments.length; i++) {
+		if (!String.prototype.format.cache[i]) {
+			String.prototype.format.cache[i] = new RegExp('\\{' + (i) + '\\}', 'g');
+		}
+		re = String.prototype.format.cache[i];
+		s = s.replace(re, arguments[i]);
+		re = null;
+	}
+	return s;
+};
+</pre>
+
+<div class="caption">Usage:</div>
+<pre>
+var template = '<option value="{1}">{2}</option>';
+
+// String.format
+console.log(template.format(123, 'San Francisco'));
+
+// StringBuilder
+var sb = new SAIC.Traffic.StringBuilder('<select>');
+sb.AppendFormat(template, 123, 'San Francisco'); 
+sb.Append('</select>');
+console.log(sb.ToString());
+
+// since StringBuilder supports chaining, you could use:
+var sb = new SAIC.Traffic.StringBuilder('<select>');
+sb.AppendFormat(template, 123, 'San Francisco').Append('</select>');
+</pre>
+
+<div class="caption"><span class="pro">Pros</span> and <span class="con">Cons</span> of this technique:</div>
+<ul>
+	<li class="pro">String.format extension allows for C# like syntax</li>
+	<li class="pro">Using array push and join is faster than string concatenation</li>
+	<li class="pro">Handy for building HTML select lists</li>
+</ul>

@@ -1,0 +1,70 @@
+body {
+	padding: 1em;
+	font-size: 14px;
+	font-weight: 400;
+	font-family: 'Ubuntu', Arial, Sans-Serif;
+}
+ul {
+	border: 1px solid #DDD;
+	list-style: none outside none;
+	margin: 0;
+	padding: 0.5em 0.25em 0.5em 0.5em;
+}
+li {
+	cursor: pointer;
+}
+.box {
+	color: #333;
+	padding: 0.2em;
+	margin-bottom: 1em;
+	margin-right: 5px;
+	font-size: 0.9em;
+	border: 1px solid #000;
+}
+.clickable, .editable {
+	cursor: pointer;
+}
+.column {
+	width: 10.5%;
+	float: left;
+	display: inline;
+	padding: 2px;
+	*margin-right: -1px;
+}
+.handle {
+	display: inline-block;
+	width: 1.5em;
+	background-color: #000;
+	color: #FFF;
+	text-align: center;
+}
+.headline {
+	background-color: #DDD;
+	font-weight: 500;
+	height: 1.5em;
+	padding: 0 4px;
+}
+
+.hidden { display: none; }
+
+.col1 .box { background-color: #F0F8FF; }
+.col2 .box { background-color: #FFFACD; }
+.col3 .box { background-color: #FFC300; }
+.col4 .box { background-color: #B5DBFF; }
+.col5 .box { background-color: #EEEEFF; }
+.col6 .box { background-color: #D9D18E; }
+.col7 .box { background-color: #9CCFFF; }
+.col8 .box { background-color: #FF00FF; }
+
+#json-data {
+	margin: 1em 2em 1em 1em;
+}
+
+/* jQuery UI mods here */
+.ui-widget {
+	font-family: inherit;
+	font-size: 0.95em;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	font-weight: 500;
+}

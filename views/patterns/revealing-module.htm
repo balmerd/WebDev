@@ -1,0 +1,40 @@
+﻿<p>
+	Something about the Revealing Module pattern...
+</p>
+<p>
+	See: <a href="http://stackoverflow.com/questions/5647258/how-to-use-revealing-module-pattern-in-javascript" target="_blank">http://stackoverflow.com/questions/5647258/how-to-use-revealing-module-pattern-in-javascript</a>
+</p>
+<p>
+	"You put everything in a closure (function) and expose only those part that you wish to be accessible. The difference between Module style (MP) and Revealing Module (RMP)
+	is that in MP functions are defined in different places while in the RMP they're always defined in the same place and then afterwards revealed in the public object literal."
+</p>
+
+<div class="caption">Code:</div>
+<pre>
+var obj = (function() {
+	var privateProperty = 2;
+	var privateMethod = function() {
+		console.log('private');
+	};
+	var myExposedMethod = function() {
+		console.log('exposed!');
+	};
+	return  {
+		PublicMethod: myExposedMethod
+	};
+
+}()); // execute the anonymous function a.k.a. "self-instantiation"
+
+obj.PublicMethod();
+</pre>
+
+<div class="caption">Console Output:</div>
+<pre>
+exposed!
+</pre>
+
+<div class="caption"><span class="pro">Pros</span> and <span class="con">Cons</span> of this technique:</div>
+<ul>
+	<li class="pro">tbd</li>
+	<li class="con">tbd</li>
+</ul>

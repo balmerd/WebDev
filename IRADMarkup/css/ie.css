@@ -1,0 +1,7 @@
+#header{background:#006ab4;}
+#nav ul{background: #065b96;}
+#nav ul li:hover a,
+#nav ul li.active a{filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00253e', endColorstr='#00416e',GradientType=0 );}
+#nav ul ul{background: #00416e;}
+#nav ul .drop ul a,
+#nav ul ul ul{filter:none;}

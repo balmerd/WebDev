@@ -1,0 +1,32 @@
+body {
+	padding: 0.5em;
+	font: 14px Arial, Helvetica, sans-serif;
+}
+header {
+	padding: 0.25em;
+	color: #FFF;
+	background-color: #008;
+	font-weight: bold;
+	font-size: 1.15em;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+th {
+	text-align: left;
+	background-color: #EEE;
+}
+tr, th, td {
+	border: 1px solid #EEE;
+}
+tr:hover {
+	background-color: #EEF;
+}
+nav,
+.controls {
+	margin-bottom: 0.75em;
+}
+#container {
+	border: 1px solid #008;
+}

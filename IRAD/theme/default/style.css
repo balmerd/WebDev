@@ -1,0 +1,131 @@
+html, body {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #FFF;
+}
+body {
+	font-size: 14px; /* 100% or not specifying a size will default to 16px */
+}
+html.fontface body {
+	font-weight: 300;
+	font-family: 'Signika', Arial, Helvetica, sans-serif;
+}
+html.lt-ie9 body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+a {
+	color: #0073EA;
+}
+body > header { /* only applies to the header tag that's a direct descendent of the body */
+	padding-left: 0.1em;
+	padding-bottom: 0.15em;
+	color: #FFD700; /* gold */
+	background-color: #008; /* navy */
+	font-weight: 600;
+	font-style: italic;
+	font-size: 32px;
+}
+body > footer { /* only applies to the footer tag that's a direct descendent of the body */
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	background-color: #EEE;
+	border-top: 1px solid #CCC;
+}
+body > footer .container {
+	padding: 0.25em 0.5em;
+	font-size: 0.85em;
+	text-align: right;
+}
+body > section.content { /* only applies to section tags that are direct descendents of the body */
+	padding: 0.25em;
+}
+nav.top {
+	height: 2.25em;
+	padding: 0.25em;
+	background-color: #CFF5F5;
+	border-bottom: 1px solid #CCC;
+}
+tr.news-item.hover {
+	background-color: #EFF;
+	cursor: pointer;
+}
+td.news-date {
+	width: 5em;
+	color: #555;
+	font-size: 0.85em;
+	padding-top: 0.25em;
+}
+tr.news-item div.news-details {
+	padding: 0.5em 0;
+}
+div.side {
+	float: left;
+	width: 320px; /* div.side > .container width plus vscrollbar width  */
+	padding: 0.25em 0 0.25em 0.25em;
+	overflow-y: auto;
+}
+div.side > .container {
+	width: 300px;
+}
+div.module {
+	border: 1px solid #AEE;
+	margin-bottom: 0.75em;
+}
+div.module header {
+	color: #FFD700; /* gold */
+	background-color: #5555AE;
+	padding: 0.25em;
+	font-weight: 600;
+	cursor: pointer;
+}
+div.module .container {
+	padding: 0.25em;
+	font-size: 0.85em;
+}
+div.module footer {
+	background-color: #EEE;
+	padding: 0.25em;
+	font-size: 0.75em;
+	text-align: right;
+}
+#mapdiv {
+	margin: 0.25em 0.25em 0 328px; /* margin-left is div.side width + 7 */
+	background-color: #AEE; /* similar to map water color */
+	border: 1px solid #AAA;
+}
+#mapdiv .placeholder {
+	padding: 0.25em 0.5em;
+}
+.hidden {
+	display: none;
+}
+.invisible {
+	visibility: hidden;
+}
+
+/* jQuery UI mods here */
+
+a:hover span.ui-button-text {
+	color: #FFF;
+}
+.ui-widget {
+	font-family: inherit;
+	font-size: 0.95em;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	font-weight: 600;
+}
+d
+/* OpenLayers mods here */
+
+.olControlMousePosition {
+	left: 5px;
+}
+#scale {
+	position: absolute;
+	top: 0.2em;
+	left: 0.5em;
+}

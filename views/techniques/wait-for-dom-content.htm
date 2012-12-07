@@ -1,0 +1,65 @@
+﻿<p>
+	Enables deferred execution of a defined action until a specifed condition is true.
+</p>
+<p>
+	Used by the Traffic and Parking applications to make sure that the map is ready before attempting to call any methods.
+</p>
+
+<div class="caption">Code:</div>
+<div class="stickie">
+Using the Revealing Module Pattern to expose public <b>MapReady</b> and <b>PageInit</b> methods that wrap the private <b>_wait</b> function and provide default options.
+<br /><br />
+The <b>_wait</b> function has a limit on the number of iterations so that an infinite loop is not created.
+</div>
+<pre>
+SAIC.Util.WaitFor = (function() {
+	
+	function _wait(options, fnCondition, fnAction) {
+		var intervalId, count = 0;
+		if (options) {
+			var max = options.MaxIterations || 50;
+			if (typeof fnCondition === 'function' && typeof fnAction === 'function') {
+				if (fnCondition()) { // allow immediate execution if fnCondition is true
+					fnAction();
+				} else {
+					intervalId = setInterval(function() { // otherwise wait until it's true
+						count++;
+						if (fnCondition() || count > max) { // prevent infinite loop
+							clearInterval(intervalId);
+							if (count > max) {
+								console.log('SAIC.Util.WaitFor({0}) exceeded wait limit.'.format(options.Caller));
+							}
+							fnAction();
+						}
+					}, options.Interval);
+				}
+			} else {
+				console.log('SAIC.Util.WaitFor() fnCondition and/or fnAction are not functions');
+			}
+		} else {
+			console.log('SAIC.Util.WaitFor() missing options param');
+		}
+	}
+
+	return {
+		MapReady: function(fnCondition, fnAction) {
+			_wait({ Caller: 'Map.Ready', Interval: 200, MaxIterations: 25 }, fnCondition, fnAction);
+		},
+		PageInit: function(fnCondition, fnAction) {
+			_wait({ Caller: 'Page.Init', Interval: 200, MaxIterations: 50 }, fnCondition, fnAction);
+		}
+	};
+}()); // self-instantiation
+</pre>
+
+<div class="caption">Usage:</div>
+<div class="stickie hidden"></div>
+<pre>
+SAIC.Util.WaitFor.MapReady(function() {
+	// condition that must be true before action is called
+	return $('#map').hasClass('active');
+}, function () {
+	// action to perform when ready
+	console.log('ready!');
+});
+</pre>

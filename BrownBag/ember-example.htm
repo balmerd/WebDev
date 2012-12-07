@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ember.js JavaScript MVC Framework</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<script type="text/x-handlebars" data-template-name="exampleTemplate">
+		<header>Ember Example</header>
+		<table>
+			<tr>
+				<th>Location</th>
+				<th>Activity</th>
+				<th>Description</th>
+			</tr>
+			{{#each content}}
+			{{#view App.rowView}}
+			<tr {{action "clicked" on="click"}}>
+				<td>{{location}}</td>
+				<td>{{activity}}</td>
+				<td>{{description}}</td>
+			</tr>
+			{{/view}}
+			{{/each}}
+		</table>
+	</script>
+</head>
+<body>
+	<nav>
+		<a href="handlebars-example.htm"><button>Handlebars</button></a>
+		<a href="handlebars-helper.htm"><button>Handlebars Helper</button></a>
+		<a href="ember-example.htm"><button>Ember</button></a>
+		<a href="ember-computed.htm"><button>Ember Computed Property</button></a>
+		<a href="ember-encapsulated.htm"><button>Ember Encapsulated Controller</button></a>
+	</nav>
+
+	<div class="controls">
+		<button id="btnAdd">add row</button>
+		<button id="btnRemove">remove row</button>
+		<span id="selection"></span>
+	</div>
+
+	<div id="container" style="width:50em;"></div>
+
+	<script src="js/libs/jquery-1.8.3.min.js"></script>
+	<script src="js/libs/handlebars-1.0.0.beta.6.js"></script>
+	<script src="js/libs/ember-1.0.0-pre.2.min.js"></script>
+	<script src="js/ember-example.js"></script>
+</body>
+</html>

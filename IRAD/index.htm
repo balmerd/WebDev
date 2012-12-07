@@ -1,0 +1,114 @@
+<!doctype html>
+<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->	<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>IRaD Prototype</title>
+
+	<meta name="description" content="IRad Prototype">
+	<meta name="author" content="david.b.balmer@saic.com">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+	<link rel="stylesheet" href="../css/html5-boilerplate.css" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Signika:700,400,300,600">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/flick/jquery-ui.css" />
+
+	<!-- TODO: the theme will be provided from server-side code -->
+	<!-- this is the only place where the theme is defined -->
+	<!-- based on the stylesheet title, the app will examine the href and set it's themePath -->
+	<link rel="stylesheet" title="main" href="theme/default/style.css?v=1">
+
+	<script src="../js/modernizr-2.5.3.min.js"></script>
+
+	<!-- TODO: templates should be in embedded in UserControls -->
+	<script type="text/x-handlebars" data-template-name="breakingNewsModule">
+		<header>Breaking News &amp; Construction</header>
+		<div class="container collapsible">
+			<table>
+			{{#each App.breakingNewsController}}
+				<tr class="news-item">
+					<td class="news-date">{{date}}</td>
+					<td>
+						{{title}}
+						<div class="news-details hidden">{{details}}</div>
+					</td>
+				</tr>
+			{{/each}}
+			</table>
+		</div>
+		<footer class="collapsible">Last updated: {{lastUpdated}}</footer>
+	</script>
+</head>
+<body>
+	<header role="banner">
+		SAIC IRaD Prototype
+	</header>
+
+	<nav role="navigation" class="top clearfix">
+		<button class="hidden" name="btnLinks">Links</button>
+		<button class="hidden" name="btnEvents">Events</button>
+		<button class="hidden" name="btnNews">News</button>
+		<button class="hidden" name="btnCameras">Cameras</button>
+		<button class="hidden" name="btnCMSSigns">CMS Signs</button>
+	</nav>
+
+	<section role="main" class="content">
+
+		<div class="side clearfix">
+			<div class="container">
+
+				<div class="module">
+					<header>module header</header>
+					<div class="container collapsible">
+						module content here
+					</div>
+					<footer class="collapsible">module footer</footer>
+				</div>
+
+				<div class="module hidden" id="breaking-news">
+					<!-- content from "breakingNewsModule" template -->
+				</div>
+
+				<div class="module hidden" id="lorem-ipsum">
+					<header>Lorem Ipsum</header>
+					<div class="container collapsible">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sodales lobortis placerat. Morbi id tortor eu mauris dapibus cursus. Fusce vitae dolor dapibus ante dignissim accumsan. Proin volutpat tellus nec ante viverra ornare. Curabitur eleifend urna vitae ante hendrerit euismod. Maecenas felis sem, mattis vel viverra a, eleifend eu elit. Sed libero massa, eleifend vitae hendrerit vitae, posuere ac orci. Phasellus quis nunc et mi pulvinar iaculis eu at nisi. Nam lacus mi, blandit eget consectetur ut, luctus ut tortor.
+					</div>
+					<footer class="collapsible">module footer</footer>
+				</div>
+
+			</div>
+		</div>
+
+		<div id="mapdiv">
+			<div class="placeholder">loading map...</div>
+		</div>
+	</section>
+
+	<footer role="contentinfo">
+		<div class="container">
+			Copyright &copy; 2012 SAIC Inc.
+			<div id="scale"></div>
+		</div>
+	</footer>
+
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+	<script src="../js/jquery.ba-throttle-debounce.min.js"></script>
+
+	<script src="../js/handlebars-1.0.0.beta.6.js"></script>
+	<script src="../js/ember-1.0.0-pre.2.min.js"></script>
+
+	<script src="../js/dateFormat.js"></script>
+
+	<!-- the "data-main" attribute defines the location of the main application javascript -->
+	<script src="../js/require-min.js" data-main="js/app.js" ></script>
+</body>
+</html>

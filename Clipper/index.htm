@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Clipper</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/html5-boilerplate.css" />
+	<style rel="stylesheet" media="print,screen">
+		body {
+			padding: 1em;
+			font: 14px Arial, sans-serif;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+		th {
+			text-align: left;
+			font-weight: normal;
+			text-decoration: underline;
+		}
+		#container {
+			width: 1136px;
+		}
+		#content {
+			margin-top: 1em;
+		}
+		.header {
+			font-size: 32px;
+			font-weight: bold;
+		}
+		.blue-line {
+			height: 5px;
+			background-color: #0000FF;
+		}
+		.disclaimer {
+		}
+		.money {
+			text-align: right;
+ 		}
+ 		.date { width: 14em; }
+ 		.transaction-type { width: 28.25em; }
+ 		.location { width: 15em; }
+ 		.route { width: 6em; }
+ 		.product { width: 14.5em; }
+ 		.debit { width: 4.5em; }
+ 		.credit { width: 4.5em; }
+ 		.balance { width: 5em; padding-left: 0.75em; }
+ 		.row { line-height: 2em; }
+	</style>
+	<script src="../js/modernizr-2.5.3.min.js"></script>
+
+	<script type="text/x-handlebars" id="header">
+		<tr>
+			<th class="date"></th>
+			<th class="transaction-type">TRANSACTION TYPE</th>
+			<th class="location">LOCATION</th>
+			<th class="route">ROUTE</th>
+			<th class="product">PRODUCT</th>
+			<th class="debit money">DEBIT</th>
+			<th class="credit money">CREDIT</th>
+			<th class="balance money">BALANCE*</th>
+			<th></th>
+		</tr>
+	</script>
+
+	<script type="text/x-handlebars" id="details">
+		<tr class="row">
+			<td>{{txnDate}}</td>
+		{{#if refill}}
+			<td>Threshold auto-load at a TransLink Device</td>
+			<td>ACT #{{txn}}</td>
+			<td></td>
+			<td>Translink E-Cash</td>
+			<td></td>
+			<td class="money">50.00</td>
+		{{else}}
+			<td>Single-tag fare payment</td>
+			<td>ACT bus</td>
+			<td>{{route}}</td>
+			<td>Translink E-Cash</td>
+			<td class="money">2.10</td>
+			<td class="money"></td>
+		{{/if}}
+			<td class="money">{{formattedBalance balance}}</td>
+			<td></td>
+		</tr>
+	</script>
+
+	<script type="text/x-handlebars" id="footer">
+		{{#if this.data}}
+		<tr><td colspan="9">
+			<div class="disclaimer">* If there is a discrepancy in the listing of the card balance, it may be due to a transaction not reaching the central system. Please contact the Customer Service Center at 877-878-8883 with any questions.</div>
+		</td></tr>
+		{{/if}}
+		<tr><td colspan="9"><div class="blue-line"></div></td></tr>
+		<tr style="page-break-after:always;">
+			<td>{{getProp "runDate"}}</td>
+			<td colspan="6"></td>
+			<td colspan="2" style="text-align:right;">Page {{getProp "pageNum"}} of {{getProp "totalPages"}}</td>
+		</tr>
+	</script>
+
+	<script type="text/x-handlebars" id="expense">
+		<table>
+			{{> header}}
+			{{#each data}}
+				{{#if divider}}
+					{{> footer}}
+					{{> header}}
+				{{/if}}
+				{{> details}}
+			{{/each}}
+			{{> footer}}
+		</table>
+	</script>
+</head>
+<body>
+	<div id="container">
+		<!--img src="logo.png" style="display:none;" /-->
+		<!--div class="blue-line"></div-->
+		<div id="content"></div>
+		<div id="textfile"></div>
+	</div>
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+	<script src="../js/dateFormat.js"></script>
+	<script src="../js/handlebars-1.0.0.beta.6.js"></script>
+	<script>
+		var runDate, totalPages;
+
+		Handlebars.registerHelper('debug', function(optionalValue) { // SEE: http://blog.teamtreehouse.com/handlebars-js-part-3-tips-and-tricks
+			console.log('HANDLEBARS VIEW CONTEXT:');
+			console.log(this);
+			if (arguments.length > 1) {
+				console.log(optionalValue);
+			}
+		});
+
+		Handlebars.registerHelper('getProp', function(prop) {
+			if (this.data) { // footer was called outside of {{#each}}, so "this" refers to the entire data object
+				return this.data[this.data.length - 1][prop];
+			} else { // footer was called within {{#each}}, so "this" refers to the current row
+				return this[prop];
+			}
+		});
+
+		Handlebars.registerHelper('formattedBalance', function(value) {
+			return (Math.round(value * 100) / 100);
+		});
+
+		$(function() {
+			var data = [];
+			var pageNum = 1;
+			var txn = 4062;
+			var debit = 2.10;
+			var i, route, trip = 0;
+			var balance = 35.75 + debit;
+			var routes = ['20','51','ACNONE'];
+			var alameda = [7,10,12,13,31,32,33,35];
+			var oakland = [25,27,28,31,32,33,35,38];
+			var txnDate, startDate = new Date('11/14/2012');
+			Handlebars.registerPartial('header', Handlebars.compile($('#header').html()));
+			Handlebars.registerPartial('footer', Handlebars.compile($('#footer').html()));
+			Handlebars.registerPartial('details', Handlebars.compile($('#details').html()));
+			var template = Handlebars.compile($('#expense').html());
+			
+			function getRandom(arr) {
+				var len = arr.length;
+				return arr[Math.floor(Math.random() * len)];
+			}
+
+			for (i=1; i<60; i++) {
+				trip++;
+				balance -= debit;
+				txnDate = new Date(startDate);
+				if (trip %2) { // Alameda
+					txnDate.setMinutes((8 * 60) + getRandom(alameda));
+				} else { // Oakland
+					txnDate.setMinutes((18 * 60) + getRandom(oakland));
+				}
+				txnDate = txnDate.format('mm/dd/yyyy hh:MM TT');
+				route = getRandom(routes);
+				if (i % 28) {
+					data.push({ 'route': route, 'txn': txn, 'txnDate': txnDate, 'refill': false, 'balance': balance, 'pageNum': pageNum });
+				} else {
+					data.push({ 'route': route, 'txn': txn++, 'txnDate': txnDate, 'refill': false, 'balance': balance, 'divider': true, 'pageNum': pageNum++ });
+				}
+				if (balance < 10) {
+					balance += 50;
+					data.push({ 'route': route, 'txn': txn, 'txnDate': txnDate, 'refill': true, 'balance': balance, 'pageNum': pageNum });
+				}
+				// TODO: skip weekends and holidays :-(
+				startDate.setDate(startDate.getDate() + 1);
+			}
+			$.each(data, function() {
+				this.totalPages = pageNum;
+				this.runDate = startDate.format('mm/dd/yyyy');
+				runDate = startDate.format('mm/dd/yyyy');
+			});
+
+			//$('#content').html(template({ 'data': data }));
+
+			var textfile$ = $('#textfile');
+			var txnType, location, debitAmt, creditAmt;
+
+			$.each(data, function() {
+				if (this.refill) {
+					location = 'ACT #' + this.txn;
+					debitAmt = '';
+					creditAmt = '50.00';
+					txnType = 'Threshold auto-load at a TransLink Device';
+				} else {
+					location = 'ACT bus';
+					creditAmt = '';
+					debitAmt = debit;
+					txnType = 'Single-tag fare payment';
+				}
+				textfile$.append(this.txnDate + ',' + txnType + ',' + location + ',' + this.route + ',Translink E-Cash,' + debitAmt + ',' + creditAmt + ',' + (Math.round(this.balance * 100) / 100) + '<br/>');
+			});
+			textfile$ = null;
+
+			setTimeout(function() {
+				$('.row:odd').css('background-color', '#EEE');
+			}, 500);
+		});
+	</script>
+</body>
+</html>

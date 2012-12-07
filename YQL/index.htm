@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Cross-Domain HTML content using YQL's XML format</title>
+	<script type="text/javascript">
+		function yqlXMLQuery(url, xpath) {
+			var query = "select * from html where url='{0}'".format(url) + (xpath ? " and xpath='{0}'".format(xpath.replace('"','\"')) : "");
+			return ("http://query.yahooapis.com/v1/public/yql?q="+encodeURIComponent(query)+"&format=xml&callback=?");
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btnLoad" value="Get Content" />
+    <div id="content"></div>
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="../js/plugins.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#btnLoad").click(function(evt) {
+				evt.preventDefault();
+				// use Yahoo! Query Language to return cross-domain page contents
+				$.ajax({
+					type: 'GET',
+					url: yqlXMLQuery("http://dbalmer.net", '//div[@id="page_wrapper"]'),
+					dataType: 'jsonp',
+					success: function(data, textStatus) {
+						var content = data.results[0];
+						$("#content").html(content);
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

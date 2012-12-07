@@ -1,0 +1,119 @@
+html, body {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #FFF;
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+body > header {
+	color: #FFD700; /* gold */
+	background-color: #008; /* navy */
+	font-weight: 700;
+	font-style: italic;
+	font-size: 32px;
+	padding-left: 0.10em;
+}
+body > header span {
+	font-size: 0.75em;
+}
+nav {
+	background-color: #CFF5F5; /* several shades lighter than #7FFFD4 (Aquamarine) */
+	padding: 0.25em;
+}
+#tester {
+	width: 99%;
+	margin: 0.5em;
+	border: 1px solid #000;
+}
+section header {
+	padding: 0.25em;
+	color: #F0F8FF; /* AliceBlue */
+	background-color: #5858C3;
+	font-weight: 500;
+}
+section header.comment {
+	color: #FFD700; /* Gold */
+	background-color: #008; /* Navy */
+	font-size: 1.15em;
+}
+article header {
+	color: #000;
+	padding: 0.25em;
+	font-weight: 500;
+	background-color: #EEE;
+	border-bottom: 1px solid #DDD;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+tr, td {
+	border: 1px solid #EEE;
+}
+td {
+	padding: 0.25em;
+}
+td.check {
+	width: 2em;
+	text-align: center;
+}
+input[type="checkbox"]:focus {
+	outline: #000 dotted 2px;
+}
+.clickable {
+	cursor: pointer;
+}
+.hidden {
+	display: none;
+}
+.notes {
+	padding: 0 0 0.5em 0.5em;
+	color: #F0F8FF;
+	background-color: #008;
+	font-size: 0.9em;
+}
+#viewstate-dialog {
+	font-size: 0.85em;
+}
+#viewstate-dialog th {
+	text-align: left;
+	background-color: #EEE;
+}
+
+/* jQuery UI mods here */
+.ui-widget {
+	font-size: 0.95em;
+	font-family: inherit;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	font-weight: 700;
+}
+
+@media screen {
+	html.fontface body {
+		font-weight: 400;
+		font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+	}
+}
+@media print {
+	html, body, #tester {
+		margin: 0;
+		float: none;
+	}
+	body > header,
+	nav,
+	.ui-button {
+		display: none;
+	}
+	section header {
+		background-color: #CCC !important;
+	}
+	section header.comment {
+		background-color: #AAA !important;
+	}
+	article header {
+		background-color: #EEE !important;
+	}
+}

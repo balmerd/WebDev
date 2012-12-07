@@ -1,0 +1,273 @@
+<!doctype html>
+<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->	<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>SAIC Web Dev</title>
+	<meta name="description" content="Tools and techniques for SAIC web developers">
+	<meta name="author" content="david.b.balmer@saic.com">
+
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link rel="stylesheet" href="css/html5-boilerplate.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/flick/jquery-ui.css" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,700italic">
+	<link rel="stylesheet" href="css/style.css?v=1">
+
+	<script src="js/modernizr-2.5.3.min.js"></script>
+</head>
+<body>
+
+	<header role="banner">SAIC Web Dev <span></span></header>
+
+	<nav role="navigation" class="top clearfix">
+		<button name="home">Home</button>
+		<button name="tools">Tools</button>
+		<button name="widgets" data-url="views/widgets/index.htm">Widgets</button>
+		<button name="patterns" data-url="views/patterns/index.htm">Patterns</button>
+		<button name="techniques" data-url="views/techniques/index.htm">Techniques</button>
+		<button name="projects" data-url="views/projects/index.htm">Projects</button>
+		<button name="docs">Docs</button>
+		<button name="ebooks">eBooks</button>
+	</nav>
+
+	<section role="main" class="content">
+		<article class="home">
+			<fieldset>
+				<legend>localhost</legend>
+				<a class="button" target="_blank" href="http://localhost/511Traffic2.0/Index.mvc">Traffic</a>
+				<a class="button" target="_blank" href="http://localhost/511Traffic2.0/testframe.htm">Traffic Unit Tests</a>
+				<a class="button" target="_blank" href="http://localhost/511Traffic2.0/Parking/Index.mvc">Parking</a>
+				<a class="button" target="_blank" href="http://localhost/511Traffic2.0/Areas/Parking/testframe.htm">Parking Unit Tests</a>
+			</fieldset>
+			<fieldset>
+				<legend>map1-2.lan.511.org</legend>
+				<a class="button" target="_blank" href="http://trafficweb1.511.org">Traffic</a>
+				<a class="button" target="_blank" href="http://trafficweb1.511.org/testframe.htm">Traffic Unit Tests</a>
+				<a class="button" target="_blank" href="http://trafficweb1.511.org/Parking/Index">Parking</a>
+				<a class="button" target="_blank" href="http://trafficweb1.511.org/Areas/Parking/testframe.htm">Parking Unit Tests</a>
+				<a class="button" target="_blank" href="http://trafficadmin1.511.org">Traffic Admin (legacy)</a>
+				<a class="button" target="_blank" href="http://traffic30.511.org">Traffic with HOV Lanes, CMS Signs, TrafficLand Cameras and Promo boxes from database</a>
+				<a class="button" target="_blank" href="http://trafficadmin1.511.org">CMS Admin site for Promo Boxes and Alerts</a>
+			</fieldset>
+			<fieldset>
+				<legend>map2-2.lan.511.org</legend>
+				<a class="button" target="_blank" href="http://trafficweb2.511.org">Traffic</a>
+				<a class="button" target="_blank" href="http://trafficweb2.511.org/testframe.htm">Traffic Unit Tests</a>
+				<a class="button" target="_blank" href="http://trafficweb2.511.org/Parking/Index">Parking</a>
+				<a class="button" target="_blank" href="http://trafficweb2.511.org/Areas/Parking/testframe.htm">Parking Unit Tests</a>
+				<a class="button" target="_blank" href="http://trafficadmin2.511.org">Traffic Admin (legacy)</a>
+			</fieldset>
+			<fieldset>
+				<legend>map3-2.lan.511.org</legend>
+				<a class="button" target="_blank" href="http://trafficweb3.511.org">Traffic</a>
+				<a class="button" target="_blank" href="http://trafficweb3.511.org/testframe.htm">Traffic Unit Tests</a>
+				<a class="button" target="_blank" href="http://trafficweb3.511.org/Parking/Index">Parking</a>
+				<a class="button" target="_blank" href="http://trafficweb3.511.org/Areas/Parking/testframe.htm">Parking Unit Tests</a>
+				<a class="button" target="_blank" href="http://trafficadmin3.511.org">Traffic Admin (legacy)</a>
+			</fieldset>
+		</article>
+		<article class="tools hidden">
+			<ul class="references">
+				<li><a target="_blank" href="http://jslint.com/">JS Lint</a> (code quality tool for JavaScript)</li>
+				<li><a target="_blank" href="http://jshint.com/">JS Hint</a> (a version of JS Lint with additional options)</li>
+				<li><a target="_blank" href="http://csslint.net/">CSS Lint</a> (code quality tool for CSS)</li>
+				<li><a target="_blank" href="http://jsonlint.com/">JSON Lint</a> (code quality tool for JSON, makes JSON/JSONP readable)</li>
+				<li><a target="_blank" href="http://jsbeautifier.org/">JS Beautifier</a> (beautify, unpack or deobfuscate JavaScript and HTML, make JSON/JSONP readable, etc.)</li>
+				<li><a target="_blank" href="http://www.tareeinternet.com/scripts/unescape.html">Unescape</a> (handy for decoding cookie values)</li>
+				<li><a target="_blank" href="http://lipsum.com">lipsum.com</a> (lorem ipsum generator)</li>
+				<li><a target="_blank" href="http://lorempixel.com/">lorempixel.com</a> (random placeholder image generator)</li>
+			</ul>
+		</article>
+		<article class="widgets hidden">
+			<nav role="navigation" class="side clearfix">
+				<a class="button" target="_blank" href="DateTimePicker/index.htm" title="opens in new page">DateTime Picker (cannot select date or time before current)</a>
+			</nav>
+			<div class="content"></div>
+		</article>
+		<article class="patterns hidden">
+			<nav role="navigation" class="side clearfix">
+				<button name="singleton" data-url="views/patterns/singleton.htm">Singleton</button>
+				<button name="module" data-url="views/patterns/module.htm">Module</button>
+				<button name="revealing-module" data-url="views/patterns/revealing-module.htm">Revealing Module</button>
+			</nav>
+			<div class="content"></div>
+		</article>
+		<article class="techniques hidden">
+			<nav role="navigation" class="side">
+				<button name="namespacing" data-url="views/techniques/namespacing.htm">Namespacing</button>
+				<button name="string-builder" data-url="views/techniques/string-builder.htm">StringBuilder and String.format</button>
+				<button name="attribute-compression" data-url="views/techniques/attribute-compression.htm">Attribute Compression</button>
+				<button name="wait-for-dom-content" data-url="views/techniques/wait-for-dom-content.htm">Wait for DOM Content</button>
+				<button name="find-event-handlers" data-url="views/techniques/find-event-handlers.htm">Find DOM Event Handlers</button>
+			</nav>
+			<div class="content"></div>
+		</article>
+		<article class="projects hidden">
+			<nav role="navigation" class="side clearfix">
+				<a class="button" target="_blank" href="TaskBoard/index.htm" title="opens in new page">TaskBoard using Lawnchair DOM persistence</a>
+				<a class="button" target="_blank" href="BugList/index.htm" title="opens in new page">BugList</a>
+				<button name="ember" data-url="views/projects/ember/index.htm">Ember.js Notes</button>
+				<a class="button" target="_blank" href="BrownBag/handlebars-example.htm" title="opens in new page">Ember.js Brown Bag</a>
+				<button name="ember-references" data-url="views/projects/ember/references.htm">Ember.js References</button>
+				<a class="button" target="_blank" href="http://localhost/IRADMVC/Index.mvc" title="opens in new page">IRAD MVC Prototype</a>
+				<a class="button" target="_blank" href="YQL/index.htm" title="use Yahoo! Query Language to return cross-domain page contents, opens in new page">YQL Query</a>
+				<a class="button" target="_blank" href="http://localhost/BRIAN/index.html" title="opens in new page">Brian's Portfolio</a>
+				<a class="button" target="_blank" href="http://localhost/NATGEOTING/index.html" title="opens in new page">NatGeo 'ting</a>
+				<a class="button" target="_blank" href="TestCases/index.htm" title="opens in new page">Traffic TestCases</a>
+				<a class="button" target="_blank" href="IRADMarkup/index.html" title="opens in new page">IRAD Markup</a>
+			</nav>
+			<div class="content"></div>
+		</article>
+		<article class="docs hidden">
+			<ul class="references">
+				<li><a target="_blank" href="Docs/JavasScript%20Object%20Model%20Diagram.docx" title="SEE: \\OAK-storage\users\David Balmer\_Traffic\DOCS">511Traffic JavasScript Object Model Diagram</a></li>
+				<li><a target="_blank" href="Docs/Traffic%20Web%20Redesign%20Javascript%20Architecture%20v1.3.DOCX" title="SEE: \\OAK-storage\users\David Balmer\_Traffic\DOCS">Traffic Web Redesign Javascript Architecture</a></li>
+				<li><a target="_blank" href="Docs/Additional%20Camera%20Sources%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/Camera Utilities/TrafficLandUpdate/TrafficLandService/Documentation">Additional Camera Sources</a></li>
+				<li><a target="_blank" href="Docs/TrafficLand%20Update%20Service%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/Camera Utilities/TrafficLandUpdate/TrafficLandService/Documentation">TrafficLand Update Service</a></li>
+				<li><a target="_blank" href="Docs/Add%20CMS%20Sign%20Content%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/CMS Update/CMSUpdateService/Documentation">Add CMS Sign Content</a></li>
+				<li><a target="_blank" href="Docs/Static%20Map%20Service%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/StaticMap/StaticMapService/Documentation">Static Map Service</a></li>
+				<li><a target="_blank" href="Docs/Static%20Map%20Mobile%20Service%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/StaticMapMobile/StaticMapMobileService/Documentation">Static Map Mobile Service</a></li>
+				<li><a target="_blank" href="Docs/511Traffic%20Admin%20v1.0.DOCX" title="SVN: http://vcs.lan.511.org/Repositories/TI_Prod/TI 511-Web/Traffic 2.0 Admin/511TrafficAdmin/Documentation">Traffic Admin site for Alerts and Promos</a></li>
+				<li><a target="_blank" href="Docs/Amazon%20Web%20Services%20Deployment.DOCX">Amazon Web Services Deployment</a></li>
+			</ul>
+		</article>
+		<article class="ebooks hidden">
+			<a target="_blank" href="eBooks/sencha-touch-102-coursebook-full.pdf" title="Fast Track to Sencha Touch"  >
+				<img src="images/eBooks/fast-track-to-sencha-touch.jpg" />
+			</a>
+			<a target="_blank" href="eBooks/CSharp-in-Depth.pdf" title="C# in Depth">
+				<img src="images/eBooks/csharp-in-depth.jpg" />
+			</a>
+			<a target="_blank" href="eBooks/Pro-ASP-NET-4-in-CSharp-2010-Fourth-Edition.pdf" title="Pro ASP.NET 4 in C#2010, 4th Edition">
+				<img src="images/eBooks/pro-asp-net-4-csharp.jpg" />
+			</a>
+			<a target="_blank" href="eBooks/Pro-ASP-NET-MVC-2-Framework-2nd-Edition.pdf" title="Pro ASP.NET MVC 2 Framework, 2nd Edition">
+				<img src="images/eBooks/pro-asp-net-mvc-2-framework.jpg" />
+			</a>
+			<a target="_blank" href="eBooks/jQuery-in-Action-Second-Edition.pdf" title="jQuery in Action, 2nd Edition">
+				<img src="images/eBooks/jquery-in-action.jpg" />
+			</a>
+			<a target="_blank" href="eBooks/jQuery-Mobile-Web-Development-Essentials.pdf" title="jQuery Mobile Web Development Essentials">
+				<img src="images/eBooks/jquery-mobile-web-development-essentials.jpg" />
+			</a>
+			<a target="_blank" href="eBooks/Master-Mobile-Web-Apps-with-jQuery-Mobile.pdf" title="Master Mobile Web Apps with jQuery Mobile">
+				<img src="images/eBooks/master-mobile-web-apps-with-jquery.jpg" />
+			</a>
+			<a target="_blank" href="eBooks/OpenLayers-2.10.pdf" title="OpenLayers 2.10 Beginners Guide">
+				<img src="images/eBooks/openlayers-beginners-guide.jpg" />
+			</a>
+			<a target="_blank" href="eBooks/OpenLayers-Cookbook.pdf" title="OpenLayers Cookbook">
+				<img src="images/eBooks/openlayers-cookbook.jpg" />
+			</a>
+		</article>
+	</section>
+
+	<!--footer role="contentinfo"></footer-->
+	
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+	<script src="js/jquery.ba-hashchange.min.js"></script>
+	<script src="js/plugins.js"></script>
+
+	<script>
+		$(function() {
+
+			$.ajaxSetup({ cache: false }); // content from .htm files in the views folder using $.load()
+
+			$('a.button').button().click(function() { // external links
+				$(this).blur();
+			});
+
+			$('button').button().click(function() { // internal links
+				location.hash = $(this).attr('name');
+				$(this).blur();
+			});
+
+			// bind the hashchange event
+			$(window).hashchange(function(){
+				
+				var selection = location.hash.replace('#','');
+				var contentUrl = $('button[name={0}]'.format(selection)).attr('data-url');
+				
+				var contentReady = function() {
+					// remove "hidden" property from parent eg:"article.projects"
+					$(this).parent().removeClass('hidden').end().find('pre').each(function(index, tag) {
+						// escape tags inside of the <pre> elements in tag(this) eg: "article.projects div.content"
+						// NOTE: tags must be matched ie: </select> without a matching <select> will not work
+						$(tag).html($(tag).html().replace(/\</g, '&lt;').replace(/\>/g, '&gt;'));
+						// adjust position of any stickie associated with this <pre> tag
+						$('.stickie:eq(' + index + ')').css({top: $(tag).offset().top + 5}).show(); // plus 5 for margin-top
+					});
+				};
+
+				// hide other articles and remove their content
+				$('article').addClass('hidden').find('div.content').empty();
+
+				switch (selection.toUpperCase()) {
+					case 'TOOLS':
+						$('header span').text('~ Tools');
+						$('article.tools').removeClass('hidden');
+						break;
+					case 'WIDGETS':
+						$('article.widgets div.content').load(contentUrl, function() {
+							$('header span').text('~ Widgets');
+							contentReady.call(this);
+						});
+						break;
+					case 'PATTERNS':
+					case 'SINGLETON':
+					case 'MODULE':
+					case 'REVEALING-MODULE':
+						$('article.patterns div.content').load(contentUrl, function() {
+							$('header span').text('~ Patterns');
+							contentReady.call(this);
+						});
+						break;
+					case 'TECHNIQUES':
+					case 'NAMESPACING':
+					case 'ATTRIBUTE-COMPRESSION':
+					case 'WAIT-FOR-DOM-CONTENT':
+					case 'FIND-EVENT-HANDLERS':
+					case 'STRING-BUILDER':
+						$('article.techniques div.content').load(contentUrl, function() {
+							$('header span').text('~ Techniques');
+							contentReady.call(this);
+						});
+						break;
+					case 'PROJECTS':
+					case 'TEST-RUNNER':
+					case 'EMBER':
+					case 'EMBER-REFERENCES':
+						$('article.projects div.content').load(contentUrl, function() {
+							$('header span').text('~ Projects');
+							contentReady.call(this);
+						});
+						break;
+					case 'DOCS':
+						$('header span').text('~ Docs');
+						$('article.docs').removeClass('hidden');
+						break;
+					case 'EBOOKS':
+						$('header span').text('~ eBooks');
+						$('article.ebooks').removeClass('hidden');
+						break;
+					default : 
+						$('header span').text('');
+						$('article.home').removeClass('hidden');
+						break;
+				};				
+			})
+
+			// trigger the event on page load
+			$(window).hashchange();
+		});
+	</script>
+</body>
+</html>

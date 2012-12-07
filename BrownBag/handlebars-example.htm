@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Handlebars.js Templating Library</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<script type="text/x-handlebars" id="exampleTemplate">
+		<header>Handlebars Example</header>
+		<table>
+			<tr>
+				<th>Location</th>
+				<th>Activity</th>
+			</tr>
+			{{#each content}}
+			<tr>
+				<td>{{location}}</td>
+				<td>{{activity}}</td>
+			</tr>
+			{{/each}}
+		</table>
+	</script>
+</head>
+<body>
+	<nav>
+		<a href="handlebars-example.htm"><button>Handlebars</button></a>
+		<a href="handlebars-helper.htm"><button>Handlebars Helper</button></a>
+		<a href="ember-example.htm"><button>Ember</button></a>
+		<a href="ember-computed.htm"><button>Ember Computed Property</button></a>
+		<a href="ember-encapsulated.htm"><button>Ember Encapsulated Controller</button></a>
+	</nav>
+
+	<div class="controls">
+		<button id="btnAdd">add row</button>
+		<button id="btnRemove">remove row</button>
+		<span id="selection"></span>
+	</div>
+
+	<div id="container" style="width:50em;"></div>
+
+	<script src="js/libs/jquery-1.8.3.min.js"></script>
+	<script src="js/libs/handlebars-1.0.0.beta.6.js"></script>
+	<script src="js/handlebars-example.js"></script>
+</body>
+</html>

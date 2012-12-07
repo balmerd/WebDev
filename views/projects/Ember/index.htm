@@ -1,0 +1,102 @@
+﻿<h1>Ember.js</h1>
+<p>
+	A JavaScript MVC framework with data bindings, computed properties, and auto-updating templates.&nbsp;&nbsp;<a target="_blank" href="/WebDev/EmberJS/index.htm">Click here</a> for demo.
+</p>
+<p>Try out the "Ember.js encapsulated controller example" at <a href="http://jsfiddle.net/remlab/YemS7/" target="_blank">JSFiddle</a>.
+</p>
+
+<div class="caption">Page View Template:</div>
+<div class="stickie">
+	Contains references to child templates.&nbsp;&nbsp;Because this template does not have <b>data-template-name="xxx"</b>, it is automatically rendered when the page is loaded.
+</div>
+<pre>
+<script type="text/x-handlebars">
+	{{view App.TripHeaderView}}
+	{{view App.TripResultsView}}
+</script>
+</pre>
+
+<div class="caption">Trip Header View Template:</div>
+<div class="stickie">App.trip.<b>currentMinutes</b>, <b>roadNames</b>, and <b>typicalMinutes</b> are computed properties.</div>
+<pre>
+<script type="text/x-handlebars" data-template-name="tripHeader">
+	<table class="trip-header">
+		<tr>
+			<td style="width:200px;"><em>{{App.trip.startNode.city}} to {{App.trip.endNode.city}}</em></td>
+			<td style="width:5em;"><em>Currently:</em></td>
+			<td><em>{{App.trip.currentMinutes}}</em></td>
+		</tr>
+		<tr>
+			<td><em>{{App.trip.roadNames}}</em></td>
+			<td>Typical:</td>
+			<td>{{App.trip.typicalMinutes}}</td>
+		</tr>
+	</table>
+</script>
+</pre>
+
+<div class="caption">Trip Results View Template:</div>
+<div class="stickie">
+	<b>{{#view App.DrivingTimeSummaryView}}</b>
+	<br />
+	automatically creates an instance of the view for each row of App.drivingTimes.summary which has currentMinutes and typicalMinutes as computed properties.
+	<br /><br />
+	<b>classBinding="isActive"</b> adds class="is-active" for the row having the IsActive property = true.  This is how we apply the css to highlight the selected summary row...
+	<br /><br />
+	<b>App.drivingTimes.summaryForSelectedPath</b>.routeNumber is a computed property that returns the App.drivingTimes.summary row object for the selectedPath.
+	<br /><br />
+	<b>App.drivingTimes.detailsForSelectedPath</b> is a computed property, bound to App.drivingTimes.selectedPath, that returns the filtered list of App.drivingTimes.details where pathNumber = selectedPath.
+	&nbsp;&nbsp;
+	When the selectedPath changes, the trip results template is automatically updated.
+</div>
+<pre>
+<script type="text/x-handlebars" data-template-name="tripResults">
+	<div><em>{{App.trip.startNode.city}} to {{App.trip.endNode.city}}</em></div>
+	<div><em>A Start:</em> {{App.trip.startNode.description}}</div>
+	<div><em>B End:</em> {{App.trip.endNode.description}}</div>
+	<table class="trip-summary">
+		<tr class="header">
+			<th scope="col">Route</th>
+			<th scope="col">Current Time</th>
+			<th scope="col">Typical</th>
+			<th scope="col">Miles</th>
+			<th scope="col">Incidents</th>
+		</tr>
+		{{#each App.drivingTimes.summary}}
+			{{#view App.DrivingTimeSummaryView tagName="tr" classBinding="isActive"}}
+				<td>{{routeNumber}}</td>
+				<td>{{currentMinutes}}</td>
+				<td>{{typicalMinutes}}</td>
+				<td>{{miles}}</td>
+				<td>{{incidents}}</td>
+			{{/view}}
+		{{/each}}
+	</table>
+	<table class="trip-details">
+		<tr class="header">
+			<th scope="col">Route {{App.drivingTimes.summaryForSelectedPath.routeNumber}}</th>
+			<th scope="col">Current Speed</th>
+			<th scope="col">Typical</th>
+			<th scope="col">Incidents</th>
+		</tr>
+		{{#each App.drivingTimes.detailsForSelectedPath}}
+			<tr>
+				<td>{{roadName}}</td>
+				<td>{{currentSpeed}}</td>
+				<td>{{typicalSpeed}}</td>
+				<td>{{incidents}}</td>
+			</tr>
+		{{/each}}
+	</table>
+</script>
+</pre>
+
+<div class="caption">Code:</div>
+<pre>
+TBD
+</pre>
+
+<div class="caption"><span class="pro">Pros</span> and <span class="con">Cons</span> of this framework:</div>
+<ul>
+	<li class="con">Automatically update HTML templates when bound data changes</li>
+</ul>

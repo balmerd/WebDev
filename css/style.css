@@ -1,0 +1,159 @@
+html, body {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #FFF;
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+html.fontface body {
+	font-weight: 400;
+	font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+}
+a {
+	color: #0073EA;
+}
+header {
+	color: #FFD700; /* Gold */
+	background-color: #008; /* Navy */
+	font-weight: 700;
+	font-style: italic;
+	font-size: 32px;
+	padding-left: 0.10em;
+}
+header span {
+	font-size: 0.75em;
+}
+fieldset {
+	border: 1px solid #008;
+	margin: 1em 0;
+	padding: 1em 1em 0 1em;
+}
+fieldset a.button {
+	margin-bottom: 1em;
+}
+legend {
+	color: #FFF;
+	background-color: #008;
+	font-size: 1.1em;
+	font-variant: small-caps;
+	padding: 0.25em 1em 0.35em;
+}
+nav.top {
+	padding: 0.25em;
+	background-color: #CFF5F5; /* several shades lighter than #7FFFD4 (Aquamarine) */
+	font-weight: 700;+
+}
+nav.side {
+	float: left;
+	width: 12em;
+	padding: 0.25em;
+}
+nav.side .ui-button {
+	display: block;
+	font-weight: normal;
+	width: 12em;
+	margin-bottom: 0.5em;
+}
+body > section.content {
+	padding: 0.5em;
+}
+article > div.content {
+	margin-left: 12em;
+	padding: 0 0 0 0.5em;
+}
+article > div.content h1 {
+	font-size: 1.1em;
+	display: inline-block;
+	margin-top: 0;
+	margin-bottom: 0.5em;
+}
+article > div.content h2 {
+	font-size: 1em;
+	color: #008;
+	margin-top: 0;
+	margin-bottom: 0.5em;
+}
+article > div.content p {
+	margin-top: 0;
+	padding-top: 2px;
+}
+article.ebooks a {
+	padding-right: 1em;
+	padding-bottom: 1em;
+	display: inline-block;
+}
+article.ebooks img {
+	height: 200px;
+	border: 1px solid #000;
+}
+pre {
+	font-family: 'Lucida Console'; 
+	font-size: 0.85em; 
+	line-height: 1.25em; 
+	background-color: #F5F5F5;
+	border: 1px solid #DDD; 
+	padding: 0.5em;
+	-moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+}
+a:hover span.ui-button-text {
+	color: #FFF;
+}
+ul.references {
+	margin: 0;
+	padding: 0 0 0 0.25em;
+	list-style-position: inside;
+}
+ul.references li {
+	line-height: 2em;
+}
+ul.references li a {
+	text-decoration: none;
+}
+ul.references li a:hover {
+	background-color: #F0F8FF; /* AliceBlue */
+	text-decoration: underline;
+}
+.pro {
+	color: Green;
+	font-weight: 500;
+}
+.con {
+	color: Red;
+	font-weight: 500;
+}
+.caption {
+	width: 100%;
+	font-weight: 500;
+	margin-top:1em;
+}
+.hidden {
+	display: none;
+}
+.stickie {
+	top: auto; /* will be overridden */
+	position: absolute;
+	display: none;
+	left: 1000px;
+	width: 35em;
+	color: #008; /* navy */
+	background-color: #FFEC8B; /* LightGoldenrod 1 */
+	border: 1px dotted #008;
+	padding: 0.25em;
+	font-size: 0.85em;
+}
+
+/* jQuery UI mods here */
+.ui-widget {
+	font-family: inherit;
+	font-size: 0.95em;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	font-weight: 700;
+}
+article.home .ui-state-default, article.home .ui-widget-content .ui-state-default, article.home .ui-widget-header .ui-state-default {
+	font-weight: 400;
+}
