@@ -1,0 +1,11 @@
+﻿html, body {
+	margin: 0;
+	padding: 0;
+}
+.ui-bar-511 {
+	background: linear-gradient(to bottom, #006AB4 0%, #004C81 68%, #00416D 100%) repeat scroll 0 0 transparent;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 1.25em;
+	text-shadow: 0 1px 1px #3E6790;
+}

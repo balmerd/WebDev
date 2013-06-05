@@ -48,6 +48,9 @@ Example.Controller = Ember.Controller.extend({
 	},
 	removeRow: function() {
 		this.model.popObject();
+	},
+	changeLocation: function(value) {
+		this.model.objectAt(0).set('location', value);
 	}
 });
 
@@ -66,6 +69,10 @@ window.App = Ember.Application.create({
 		
 		$('#btnRemove').click(function() {
 			App.controller.removeRow();
+		});
+
+		$('#btnChange').click(function() {
+			App.controller.changeLocation($('input').val());
 		});
     }
 });

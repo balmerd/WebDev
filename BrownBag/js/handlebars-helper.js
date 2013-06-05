@@ -1,4 +1,5 @@
-﻿$(document).ready(function() {
+﻿
+$(document).ready(function() {
 
 	var data = {
 		content : [
@@ -10,18 +11,13 @@
 
 	var template = Handlebars.compile($('#exampleTemplate').html());
 
-	// Handlebars HTML-escapes values returned by a {{expression}}.
-	// If you don't want Handlebars to escape a value, use {{{expression}}} 
-
 	Handlebars.registerHelper('description', function() {
 		return 'We are ' + this.activity + ' in ' + this.location;
-		// If your helper returns HTML that you do not want escaped, make sure to return a new Handlebars.SafeString
-		//return new Handlebars.SafeString('We are ' + this.activity + ' in <a href="http://lipsum.com/">' + this.location + '</a>');
 	});
 
-	$('#container').html(template(data)); // render template with data
+	$('#container').html(template(data)); // render template with data, {{#each content}} refers to "data.content"
 
-	$('#container').on('click', 'tr:has(td)', function() {
+	$('#container').on('click', 'tr:has(td)', function() { // bind click event on data row
 		console.log('clicked on a row');
 		$('#selection').html($(this).html());
 	});

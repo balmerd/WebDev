@@ -8,8 +8,8 @@ $(function() {
 	store.get(STORE_KEY, function(obj) {
 		if (obj) { // get saved content
 			tasks = obj.value;
-		} else { // revert to static content (captured from "show JSON data" button)
-			tasks = {"Queue":["OPT 1195 - When an icon is clicked, the HOV lane is also drawn on the map and the map zooms to the lane boundaries.","Admin CMS - convert hash tags containing & to &amp; to prevent server-side errors","Modify default OpenLayers popup style","Support Primary/Secondary connection strings per DB in config. Try each until one works. BRANCH ALL PROJECTS FIRST."],"Research":["OPT 1399 - Add toll bridge info to Traffic Map","Amazon deployment instructions in \"My Documents\\_AWS\""],"Design":["O&M 1400 - need map and toolbar icons for Park & Ride Lots"],"Develop":[],"Document":["Brown bag session on Ember.js JavaScript MVC framework and Handlebars templating library","Include Handlebars helpers","Include nested templates (partials)"],"Test":[],"Release_Ready":["Read config and survey xml path from registry. Move Traffic config xml into separate Config folder.","Add stack trace to StaticMaps logging","Add content-expiration header to site master pages. Add cachebuster to static map images.","Get Shields from AWS","Should not be tracking HOV_LANES during traffic refresh","Only track ZOOM and MAGNIFY once per session","Truncate TrafficLand tables if feed outdated","O&M 1400 - Add P&R lots to Traffic map","O&M 1415 - Provide error message on Traffic page when Caltrans CMS feed is down","OPT 1416 - Develop CMS text page for 511 Traffic and TIC use"],"Released":["Update WebMonitor to look at tblWatchDog for \"CMSSigns\"","Test plan for manual testing of traffic website","Show bounds of traffic feature click","Show bounds of selected traffic features","Add disclamer to TrafficLand camera dialog"],"Complete":["Investigate AWS deployment strategies"]};
+		} else { // revert to static content (captured from "Show JSON data" button)
+			tasks = {"Queue":["Admin CMS - convert hash tags containing & to amp to prevent server-side errors","Modify default OpenLayers popup style"],"511Traffic":["TRAFFIC WEB BRANCH - merge changes from My Documents: _511Traffic\\todo.txt","511 Traffic Map Zooming Issue on Chrome (CANNOT REPRODUCE)"],"IRAD":["My511 Personalization using AWS DynamoDB (get AWS .NET toolkit)"],"IRAD_Mobile":["HTML5/CSS3 with map, incidents and speed lines","Use FireFox Tools/Developer/Responsive Design View"],"DCOL2":["CHARGE TO Data Collection SubSystem","DataObjects and add DataUtils.Helper for serialization. Added NUnit serialization test cases (DONE)","Finish XML serialization, verify against docs (DONE)","Link data object : store last 5 LinkConditions (DONE)","Abstract configuration (DONE)"],"Migration":["BRANCH ALL PROJECTS FIRST (DONE)","Support multiple connection strings per DB in config. Try each until one works. (DONE)","CCNet to S3 (works - copy zip files to C:\\Projects\\Traffic 2.0 - Deployment\\ExportToS3 folder then run C:\\Projects\\AWS_Publish\\AWS_Publish.exe)","EC2 bootstrap download from S3 (WORKING)","CHARGE TO 182737.05.2.CY13.52. 00.00.000","ec2traffic.511.org at 54.241.132.205","Let Giedrius know when we need to have My511 available on AWS","CMS Signs (DONE)","Toll Bridges (DONE)","TrafficLand Cameras (DONE)","HOV Lanes (DONE 25 rows from XLS)","Deploy 511Traffic Web Branch (TBD)"],"Document":["Brown bag session on Ember.js JavaScript MVC framework and Handlebars templating library","Advanced","Nested templates (partials)","Amazon deployment instructions in \"My Documents\\_AWS\"","www.lukemelia.com for ideas"],"Release_Ready":["Add stack trace to StaticMaps logging","Add content-expiration header to site master pages. Add cachebuster to static map images.","Get Shields from AWS","Should not be tracking HOV_LANES during traffic refresh","Only track ZOOM and MAGNIFY once per session","Truncate TrafficLand tables if feed outdated","Only baseMapTile STANDARD from AWS (DONE to trafficweb4)","During cdt if zoom in/out brings back incidents"],"Complete":["Update WebMonitor to look at tblWatchDog for \"CMSSigns\"","Test plan for manual testing of traffic website","Show bounds of selected traffic features","Add disclamer to TrafficLand camera dialog","Show bounds of traffic feature click"],"TRASH":[]};
 		};
 		tasks[TRASH] = []; // empty out the trash
 		store.save({ key: STORE_KEY, value: tasks });
@@ -92,7 +92,7 @@ $(function() {
 
 	$('button').click(function() {
 		var _SHOW = "Show JSON data"
-		var _CLEAR = "Clear JSON data";
+		var _HIDE = "Hide JSON data";
 		if ($(this).text() === _SHOW) {
 			store.get(STORE_KEY, function(obj) {
 				if (obj) { // get saved content
@@ -101,7 +101,7 @@ $(function() {
 					$('#json-data').text('no data').removeClass('hidden');
 				}
 			});
-			$(this).text(_CLEAR);
+			$(this).text(_HIDE);
 		} else {
 			$('#json-data').empty();
 			$(this).text(_SHOW);

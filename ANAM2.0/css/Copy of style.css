@@ -1,0 +1,71 @@
+html {
+	font-size: 14px;
+}
+body {
+	width: 940px;
+	margin: 0 auto;
+	margin-top: 0.25em;
+	border: 1px solid #CCC;
+}
+header {
+	height: 2em;
+	background-color: #EFF;
+}
+footer {
+	background-color: #EEF;
+	border-top: 1px solid #CCC;
+}
+.wrap {
+	position: relative; /* so that .right can be positioned absolutely, relative to .wrap */
+}
+.wrap > div {
+	padding: 0.25em;
+}
+.left {
+	display: inline-block;
+}
+.right {
+	display: inline-block;
+	position: absolute;
+	right: 0;
+}
+#main {
+	height: 20em;
+	padding: 0.25em;
+}
+#main .left {
+	width: 48.5%;
+	border: 1px solid #DDD;
+}
+#main .right {
+	width: 48.5%;
+	border: 1px solid #DDD;
+}
+#main .feature {
+	width: 32%;
+	display: inline-block;
+	border: 1px solid #DDD;
+}
+.column {
+	float: left;
+	margin: 0 10px;
+	overflow: hidden;
+	display: inline;
+}
+.row {
+	width: 960px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.grid_1 { width:60px; }
+.grid_2 { width:140px; }
+.grid_3 { width:220px; }
+.grid_4 { width:300px; }
+.grid_5 { width:380px; }
+.grid_6 { width:460px; }
+.grid_7 { width:540px; }
+.grid_8 { width:620px; }
+.grid_9 { width:700px; }
+.grid_10 { width:780px; }
+.grid_11 { width:860px; }
+.grid_12 { width:940px; }

@@ -1,0 +1,35 @@
+html, body {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #FFF;
+}
+body {
+	font-family: Arial, Helvetica, MS Sans Serif;
+	font-size: 12px; /* 100% or not specifying a size will default to 16px */
+}
+#mapdiv {
+	margin: 1em;
+	background-color: #AEE; /* similar to map water color */
+	border: 1px solid #AAA;
+	width: 300px;
+	height: 400px;
+}
+.hidden {
+	display: none;
+}
+.invisible {
+	visibility: hidden;
+}
+
+/* OpenLayers mods here */
+
+.olControlMousePosition {
+	left: 5px;
+}
+#scale {
+	position: absolute;
+	top: 0.2em;
+	left: 0.5em;
+}

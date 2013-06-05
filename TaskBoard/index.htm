@@ -1,8 +1,5 @@
 <!doctype html>
-<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>			<html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!-->	<html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -15,15 +12,21 @@
 
 	<link rel="shortcut icon" href="favicon.ico">
 
-	<link rel="stylesheet" href="../css/html5-boilerplate.css" />
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:400,500">
+
+	<link rel="stylesheet" href="../css/normalize.min.css">
+	<link rel="stylesheet" href="../css/html5-boilerplate.css" />
 	<link rel="stylesheet" href="css/style.css?v=1">
 
-	<script src="../js/modernizr-2.5.3.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
 	<div id="output" class="clearfix"></div>
 	<button class="hidden">Show JSON data</button>
+	<a href="../BugList/index.htm">BugList</a>
+	<a href="../TimeSheet/index.htm">TimeSheet</a>
 	<div id="json-data" class="hidden"></div>
 	<script src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>

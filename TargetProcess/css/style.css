@@ -1,0 +1,106 @@
+body {
+	border: 0;
+	margin: 1em;
+	padding: 0;
+	height: 100%;
+	font-size: 12px;
+	font-weight: 400;
+	font-family: 'Ubuntu', Arial, Sans-Serif;
+	background-color: #AEE;
+}
+label, input {
+	display: block;
+}
+input.text {
+	margin-bottom: 12px;
+	width: 95%;
+	padding: 0.4em;
+}
+fieldset {
+	padding: 0;
+	border:0;
+}
+p {
+	margin: 0.5em 0; /* override normalize.css */
+}
+.validateTips {
+	border: 1px solid transparent;
+	padding: 0.3em;
+}
+#dialog-form p {
+	margin: 0.5em 0;
+}
+.ui-dialog .ui-state-error {
+	padding: 0.3em;
+}
+.ui-widget-overlay {
+	opacity: 0.5;
+}
+#board { width: 8000px; overflow-x: auto; }
+.scrollable { width: 100%; overflow-x: auto; }
+table { margin-bottom: 1em; }
+td { vertical-align: top; }
+th {
+	background-color: #DDD;
+	font-weight: 500;
+	text-align: left;
+}
+th, td {
+	border: 1px solid #EEE;
+	width: 12em;
+	min-width: 10em;
+	padding: 0.25em;
+}
+.single-button-column { width: 1em; min-width:1em; }
+#create-task { font-size: 0.75em; }
+.clickable { cursor: pointer; }
+ul {
+	list-style: none outside none;
+	margin: 0;
+	padding: 0.25em;
+}
+li {
+	cursor: pointer;
+}
+.box {
+	color: #333;
+	padding: 0.25em;
+	margin-bottom: 0.5em;
+	font-size: 0.9em;
+	border: 1px solid #000;
+	background-color: #F0F8FF;
+}
+#TRASH .box {
+	color: #999;
+	background-color: #FFF;
+}
+.handle {
+	display: inline-block;
+	width: 1.5em;
+	background-color: #999;
+	color: #FFF;
+	text-align: center;
+}
+.delete-icon {
+	display: inline !important;
+	float: right;
+	width: 16px;
+	margin-top: 1px;
+}
+.clickable, .editable {
+	cursor: pointer;
+}
+.hidden { display: none; }
+#json-data {
+	margin: 1em 2em 1em 1em;
+}
+
+/* jQuery UI mods here */
+
+.ui-widget {
+	font-family: inherit;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	font-weight: 500;
+}
+

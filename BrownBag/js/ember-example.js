@@ -1,6 +1,6 @@
 ﻿
 window.App = Ember.Application.create({
-	ready: function() { // called when the DOM is ready like $(document).ready()
+	ready: function() { // similar to $(document).ready() for the Application instance
 
 		Handlebars.registerHelper('description', function() {
 			return 'We are ' + this.activity + ' in ' + this.location;
@@ -14,7 +14,7 @@ window.App = Ember.Application.create({
 			]
 		});
 
-		App.rowView = Ember.View.extend({
+		App.RowView = Ember.View.extend({
 			clicked: function(evt) {
 				$('#selection').text(JSON.stringify(this._context));
 			}

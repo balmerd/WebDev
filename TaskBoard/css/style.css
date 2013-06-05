@@ -1,13 +1,8 @@
 body {
 	padding: 1em;
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
-}
-@media screen {
-	html.fontface body {
-		font-weight: 400;
-		font-family: 'Ubuntu';
-	}
+	font-weight: 400;
+	font-family: 'Ubuntu', Arial, Sans-Serif;
 }
 ul {
 	border: 1px solid #DDD;
@@ -30,7 +25,7 @@ li {
 	cursor: pointer;
 }
 .column {
-	width: 9.5%;
+	width: 10.75%;
 	float: left;
 	display: inline;
 	padding: 2px;

@@ -50,7 +50,10 @@
  		.balance { width: 5em; padding-left: 0.75em; }
  		.row { line-height: 2em; }
 	</style>
-	<script src="../js/modernizr-2.5.3.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
 	<script type="text/x-handlebars" id="header">
 		<tr>
@@ -156,15 +159,44 @@
 			var pageNum = 1;
 			var txn = 4062;
 			var debit = 2.10;
-			var i, route, trip = 0;
+			var i, x, route, trip = 0;
 			var balance = 35.75 + debit;
 			var routes = ['20','51','ACNONE'];
 			var alameda = [7,10,12,13,31,32,33,35];
 			var oakland = [25,27,28,31,32,33,35,38];
-			var txnDate, startDate = new Date('11/14/2012');
+			var txnDate, excludedDates = [
+				new Date('03/12/2012'),
+				new Date('05/07/2012'),
+				new Date('05/08/2012'),
+				new Date('05/09/2012'),
+				new Date('05/10/2012'),
+				new Date('05/11/2012'),
+				new Date('05/28/2012'),
+				new Date('06/18/2012'),
+				new Date('07/04/2012'),
+				new Date('08/06/2012'),
+				new Date('08/07/2012'),
+				new Date('08/08/2012'),
+				new Date('08/09/2012'),
+				new Date('08/10/2012'),
+				new Date('08/13/2012'),
+				new Date('08/14/2012'),
+				new Date('08/15/2012'),
+				new Date('08/16/2012'),
+				new Date('08/17/2012'),
+				new Date('09/03/2012'),
+				new Date('11/20/2012'),
+				new Date('11/22/2012'),
+				new Date('12/25/2012'),
+				new Date('12/31/2012')
+			];
+
+			var startDate = new Date('03/01/2012');
+
 			Handlebars.registerPartial('header', Handlebars.compile($('#header').html()));
 			Handlebars.registerPartial('footer', Handlebars.compile($('#footer').html()));
 			Handlebars.registerPartial('details', Handlebars.compile($('#details').html()));
+			
 			var template = Handlebars.compile($('#expense').html());
 			
 			function getRandom(arr) {
@@ -172,29 +204,51 @@
 				return arr[Math.floor(Math.random() * len)];
 			}
 
-			for (i=1; i<60; i++) {
-				trip++;
-				balance -= debit;
-				txnDate = new Date(startDate);
-				if (trip %2) { // Alameda
-					txnDate.setMinutes((8 * 60) + getRandom(alameda));
-				} else { // Oakland
-					txnDate.setMinutes((18 * 60) + getRandom(oakland));
+			for (i=1; i<400; i++) {
+				// skip weekends, holidays and vacation days
+				var dayOfWeek = startDate.getDay();
+				var excluded = (dayOfWeek === 0 || dayOfWeek === 6); // exclude weekends
+				if (!excluded) {
+					for (x = 0; x < excludedDates.length; x++) {
+						if (startDate.getTime() == excludedDates[x].getTime()) {
+							excluded = true;
+							break;
+						}
+					}
 				}
-				txnDate = txnDate.format('mm/dd/yyyy hh:MM TT');
-				route = getRandom(routes);
-				if (i % 28) {
-					data.push({ 'route': route, 'txn': txn, 'txnDate': txnDate, 'refill': false, 'balance': balance, 'pageNum': pageNum });
-				} else {
-					data.push({ 'route': route, 'txn': txn++, 'txnDate': txnDate, 'refill': false, 'balance': balance, 'divider': true, 'pageNum': pageNum++ });
+				if (!excluded) {
+					trip++;
+					balance -= debit;
+					txnDate = new Date(startDate);
+					if (trip %2) { // Alameda
+						txnDate.setMinutes((8 * 60) + getRandom(alameda));
+					} else { // Oakland
+						txnDate.setMinutes((18 * 60) + getRandom(oakland));
+					}
+					route = getRandom(routes);
+					data.push({ 'route': route, 'txn': txn++, 'txnDate': txnDate, 'refill': false, 'balance': balance });
+					if (balance < 10) {
+						balance += 50;
+						data.push({ 'route': route, 'txn': txn++, 'txnDate': txnDate, 'refill': true, 'balance': balance, 'pageNum': pageNum });
+					}
+					trip++;
+					balance -= debit;
+					txnDate = new Date(startDate);
+					if (trip %2) { // Alameda
+						txnDate.setMinutes((8 * 60) + getRandom(alameda));
+					} else { // Oakland
+						txnDate.setMinutes((18 * 60) + getRandom(oakland));
+					}
+					route = getRandom(routes);
+					data.push({ 'route': route, 'txn': txn++, 'txnDate': txnDate, 'refill': false, 'balance': balance });
+					if (balance < 10) {
+						balance += 50;
+						data.push({ 'route': route, 'txn': txn++, 'txnDate': txnDate, 'refill': true, 'balance': balance, 'pageNum': pageNum });
+					}
 				}
-				if (balance < 10) {
-					balance += 50;
-					data.push({ 'route': route, 'txn': txn, 'txnDate': txnDate, 'refill': true, 'balance': balance, 'pageNum': pageNum });
-				}
-				// TODO: skip weekends and holidays :-(
 				startDate.setDate(startDate.getDate() + 1);
 			}
+
 			$.each(data, function() {
 				this.totalPages = pageNum;
 				this.runDate = startDate.format('mm/dd/yyyy');
@@ -218,7 +272,7 @@
 					debitAmt = debit;
 					txnType = 'Single-tag fare payment';
 				}
-				textfile$.append(this.txnDate + ',' + txnType + ',' + location + ',' + this.route + ',Translink E-Cash,' + debitAmt + ',' + creditAmt + ',' + (Math.round(this.balance * 100) / 100) + '<br/>');
+				textfile$.append(this.txnDate.format('mm/dd/yyyy hh:MM TT') + ',' + txnType + ',' + location + ',' + this.route + ',Translink E-Cash,' + debitAmt + ',' + creditAmt + ',' + (Math.round(this.balance * 100) / 100) + '<br/>');
 			});
 			textfile$ = null;
 

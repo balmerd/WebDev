@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Refresh</title>
+	<meta name="author" content="david.b.balmer@saic.com">
+	<meta name="description" content="Test Firefox background tab refresh issue">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+</head>
+<body>
+	<button>start</button>
+	<button>stop</button>
+	<div id="console"></div>
+	<script>
+		var intervalId = null;
+
+		var RefreshController = function() {
+			//
+			// instantiated by PageController
+			//
+			var _this = this;
+
+			var interval = 5000;
+			var intervalId = null;
+
+			this.Start = function () {
+				intervalId = setInterval(function() {
+					var dt = new Date();
+					console.log('refreshing at ' + dt.toLocaleString());
+				}, interval);
+			};
+
+			this.Stop = function () {
+				if (intervalId) {
+					clearInterval(intervalId);
+					intervalId = null;
+				}
+			};
+		};
+
+		$(function() {
+			
+			var refreshController = new RefreshController();
+
+			$(window).focus(function() {
+				console.log('Focus');
+			}).blur(function() {
+				console.log('Blur');
+			});
+
+			$('button').click(function() {
+				if ($(this).text() === 'start') {
+					refreshController.Start();
+//					if (!intervalId) {
+//						intervalId = setInterval(function() {
+//							var dt = new Date();
+//							console.log('refreshing at ' + dt.toLocaleString());
+//						}, 5000);
+//					} else {
+//						console.error('already started');
+//					}
+				} else {
+					refreshController.Stop();
+//					if (!intervalId) {
+//						console.error('already stopped');
+//					} else {
+//						clearInterval(intervalId);
+//						intervalId = null;
+//					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>

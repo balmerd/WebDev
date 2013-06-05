@@ -1,0 +1,9 @@
+Header and menu gradients don't work in IE8
+
+
+508c Compliance
+
+"Skip to Content" link is visible and causes vscrollbar to appear when it has focus, because all.css line 44 says:
+
+	.skip:focus { height: auto; position: static; width: auto; }
+

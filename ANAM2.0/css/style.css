@@ -1,0 +1,183 @@
+/*
+colors
+	#000000		Black (#000)
+	#000080		Navy (#008)
+	#0000CC		navlist link hover
+	#0000FF		link hover
+	#20B2AA		LightSeaGreen
+	#333333		narrative (#333)
+	#4682B4		SteelBlue
+	#555555		poloroid body text
+	#66CCCC		Charis's background :-)
+	#A9A9A9		polaroid border
+	#DDDDDD		copyright and webmail
+	#EEEEEE		module header text
+	#F0F8FF		AliceBlue
+	#FFD700		Gold
+	#FFFFFF		White (#FFF)
+*/
+html {
+	font-weight: 400;
+	font-size: 13px;
+	font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+}
+body {
+	width: 980px; /* .grid-12 width plus 20px for .column margins  */
+	margin: 0 auto;
+	margin-top: 1em;
+	background-image: url(../seamless_denim_fabric_texture.jpg);
+	-moz-box-shadow: 0 0 5px #333;
+	-webkit-box-shadow: 0 0 5px #333;
+	box-shadow: 0 0 5px #333;
+}
+body > header {
+	height: 180px;
+	background-image: url(../banner-avenger.jpg);
+	position: relative; /* so that #logo, #social and top nav can be positioned relative to header */
+}
+body > header nav {
+	background-color: #008;
+	height: 2.5em;
+	line-height: 2.5em;
+	width: 785px;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+nav ul {
+	font-weight: 500;
+	padding: 0;
+	margin: 0;
+}
+nav li a {
+	text-decoration: none;
+}
+nav li a:hover {
+	text-decoration: underline;
+}
+body > header > nav li {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0 1em;
+	color: #FFD700; /* Gold */
+	background-color: #008;
+}
+body > header > nav li:hover {
+	color: #008;
+	background-color: #FFD700; /* Gold */
+}
+body > footer {
+	height: 12.75em;
+	background-color: #EEF;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #CCC;
+	margin-bottom: 1em;
+	font-size: 0.9em;
+}
+body > footer li {
+	height: 2em;
+	line-height: 2em;
+}
+body > footer .bottom {
+	margin-top: 0.25em;
+	line-height: 2.25em;
+	border-top: 1px solid #DDD;
+}
+body > section {
+	border-top: 1px solid #DDD;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	background-color: #FFF;
+}
+body > section p {
+	margin: 0 0 0.75em 0;
+	padding: 0 1em 0 1.5em;
+}
+#logo {
+	width: 195px;
+	height: 180px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#social {
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	width: 786px; /* 980 - 195 plus 1 for offset */
+	height: 1em;
+	background-color: #FFF;
+	height: 2em;
+	line-height: 2em;
+	text-align: right;
+}
+.box {
+	min-height: 2em;
+	border: 1px solid #CCC;
+}
+.right { text-align: right; }
+/* http://www.usabilitypost.com/2009/05/29/the-1kb-css-grid-part-1/ */
+
+.row {
+	width: 960px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.column {
+	float: left;
+	margin: 0 10px;
+	overflow: hidden;
+	display: inline;
+}
+.grid-1	 { width: 60px;  }
+.grid-2	 { width: 140px; }
+.grid-3	 { width: 220px; }
+.grid-4	 { width: 300px; }
+.grid-5	 { width: 380px; }
+.grid-6	 { width: 460px; }
+.grid-7	 { width: 540px; }
+.grid-8	 { width: 620px; }
+.grid-9	 { width: 700px; }
+.grid-10 { width: 780px; }
+.grid-11 { width: 860px; }
+.grid-12 { width: 940px; }
+
+#random .box {
+	min-height: 250px;
+}
+#random header {
+	font-weight: 500;
+	padding: 0.25em;
+	background-color: #EEE;
+	border-bottom: 1px solid #DDD;
+}
+#random p {
+	padding: 0.25em;
+	margin: 0.25em 0;
+}
+
+#features {
+	margin-top: 1em;
+}
+#features .box {
+	min-height: 21.5em;
+}
+#features header {
+	font-weight: 500;
+	padding: 0.25em;
+	background-color: #EEE;
+	border-bottom: 1px solid #DDD;
+}
+#features p {
+	padding: 0.25em;
+	margin: 0.25em 0;
+}
+
+#random .column, 
+#features .column {
+	-moz-box-shadow: 2px 2px 2px #EEE;
+	-webkit-box-shadow: 2px 2px 2px #EEE;
+	box-shadow: 2px 2px 2px #EEE;
+	margin-bottom: 5px !important; /* so we can see the bottom shadow */
+}

@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Date and Time Picker Demo</title>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/flick/jquery-ui.css" />
 	<style type="text/css">
 		body { font-size: .85em; font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif; margin: 0; padding: 0; color: #696969; }
 		.page { width: 90%; margin-left: auto; margin-right: auto; }		
@@ -11,7 +12,12 @@
 		.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
 		.ui-timepicker-div td { font-size: 90%; }
 	</style>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/flick/jquery-ui.css" />
+</head>
+<body>
+    <div class="page">
+		<p>Date: <input id="datepicker" type="text" style="width:15em;" /></p>
+		<p>Time: <input id="timepicker" type="text" style="width:15em;" /> (PST)</p>
+    </div>
 	<script src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
 	<script src="js/timepicker.js"></script>
@@ -186,12 +192,6 @@
 			};
 		};
 	</script>
-</head>
-<body>
-    <div class="page">
-		<p>Date: <input id="datepicker" type="text" style="width:15em;" /></p>
-		<p>Time: <input id="timepicker" type="text" style="width:15em;" /> (PST)</p>
-    </div>
 	<script type="text/javascript">
 		$(function() {
 			var picker = new DateTimePickerController();

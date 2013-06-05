@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>IRAD Mobile</title>
+	<meta name="description" content="IRAD Mobile Prototype">
+	<meta name="author" content="david.b.balmer@saic.com">
+
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="css/site.css" />
+
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+</head>
+<body>
+	<div data-role="page" id="page1">
+		<div data-theme="511" data-role="header" style="padding:5px;">
+			<img style="width:68px; height:45px" src="images/logo.png">
+			<span>511 Traffic Mobile Prototype</span>
+		</div>
+		<div data-role="content">
+			<ul data-role="listview" data-divider-theme="b" data-inset="false">
+				<li data-role="list-divider" role="heading">
+					511 Mobile Tools
+				</li>
+				<li data-theme="c">
+					<a href="#page2" data-transition="slide">Current Weather</a>
+				</li>
+				<li data-theme="c">
+					<a href="#page3" data-transition="slide">Real-time Traffic Map</a>
+				</li>
+				<li data-theme="c">
+					<a href="#page4" data-transition="slide">Incidents and Construction</a>
+				</li>
+				<li data-theme="c">
+					<a href="#page5" data-transition="slide">Emergencies and Announcements</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div data-role="page" id="page2">
+		<div data-theme="b" data-role="header">
+			<a data-role="button" data-direction="reverse" data-theme="b" href="#page1"
+			data-icon="arrow-l" data-iconpos="left" class="ui-btn-left">Home</a>
+			<h3>Current Weather</h3>
+		</div>
+		<div data-role="content">
+			current weather here
+		</div>
+	</div>
+	<div data-role="page" id="page3">
+		<div data-theme="b" data-role="header">
+			<a data-role="button" data-direction="reverse" data-theme="b" href="#page1"
+			data-icon="arrow-l" data-iconpos="left" class="ui-btn-left">Home</a>
+			<h3>Real-time Traffic Map</h3>
+		</div>
+		<div data-role="content">
+			<img src="https://maps.googleapis.com/maps/api/staticmap?center=Alameda, CA&amp;zoom=12&amp;size=288x200&amp;markers=Alameda, CA&amp;sensor=false" height="200" width="288">
+		</div>
+	</div>
+	<div data-role="page" id="page4">
+		<div data-theme="b" data-role="header">
+			<a data-role="button" data-direction="reverse" data-theme="b" href="#page1"
+			data-icon="arrow-l" data-iconpos="left" class="ui-btn-left">Home</a>
+			<h3>Incidents and Construction</h3>
+		</div>
+		<div data-role="content">
+			incidents and construction here
+		</div>
+	</div>
+	<div data-role="page" id="page5">
+		<div data-theme="b" data-role="header">
+			<a data-role="button" data-direction="reverse" data-theme="b" href="#page1"
+			data-icon="arrow-l" data-iconpos="left" class="ui-btn-left">Home</a>
+			<h3>Emergencies and Announcements</h3>
+		</div>
+		<div data-role="content">
+			emergencies and announcements here
+		</div>
+	</div>
+</body>
+</html>

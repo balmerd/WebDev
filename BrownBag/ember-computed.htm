@@ -13,15 +13,13 @@
 				<th>Activity</th>
 				<th>Description</th>
 			</tr>
-			{{#each content}}
-			{{#view App.rowView}}
-			<tr {{action "clicked" on="click"}}>
+		{{#each content}}
+			{{#view App.RowView tagName="tr"}}
 				<td>{{location}}</td>
 				<td>{{activity}}</td>
 				<td>{{description}}</td>
-			</tr>
 			{{/view}}
-			{{/each}}
+		{{/each}}
 		</table>
 	</script>
 </head>
@@ -34,13 +32,18 @@
 		<a href="ember-encapsulated.htm"><button>Ember Encapsulated Controller</button></a>
 	</nav>
 
-	<div class="controls">
+	<section class="controls">
 		<button id="btnAdd">add row</button>
 		<button id="btnRemove">remove row</button>
 		<span id="selection"></span>
-	</div>
+	</section>
 
-	<div id="container" style="width:50em;"></div>
+	<section id="container" role="main"></section>
+
+	<section class="controls">
+		<button id="btnChange">Change Location to</button>
+		<input type="text" value="Yosemite" />
+	</section>
 
 	<script src="js/libs/jquery-1.8.3.min.js"></script>
 	<script src="js/libs/handlebars-1.0.0.beta.6.js"></script>

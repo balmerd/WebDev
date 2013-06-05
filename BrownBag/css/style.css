@@ -13,20 +13,25 @@ table {
 	width: 100%;
 	border-collapse: collapse;
 }
-th {
-	text-align: left;
-	background-color: #EEE;
-}
 tr, th, td {
 	border: 1px solid #EEE;
 }
+th {
+	text-align: left;
+	background-color: #EEE;
+	border-bottom: 1px solid #CCC;
+}
 tr:hover {
+	cursor: pointer;
+	background-color: #EFF;
+}
+tr.selected {
 	background-color: #EEF;
 }
-nav,
-.controls {
-	margin-bottom: 0.75em;
-}
 #container {
+	width: 50em;
 	border: 1px solid #008;
+}
+.controls {
+	margin: 0.75em 0;
 }

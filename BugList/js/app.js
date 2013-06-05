@@ -8,41 +8,57 @@ $(function() {
 	store.get(STORE_KEY, function(obj) {
 		if (obj) { // get saved content
 			tasks = obj.value;
-		} else { // revert to static content (captured from "show JSON data" button)
+		} else { // revert to static content (captured from "Show JSON data" button)
 			tasks = {
 				"OPT_1195": [
 					"OPT 1195 - When an icon is clicked, the HOV lane is also drawn on the map and the map zooms to the lane boundaries."
 				],
 				"OPT_1399": [
-					"OPT 1399 - Add toll bridge info to Traffic Map",
+					"OPT 1399 - Add toll bridge info to Traffic Map (DONE)",
 					"OPT 1399 - XLS data file loader DONE",
-					"OPT 1399 - Need map and toolbar icons",
-					"Started 10:15 AM"
+					"OPT 1399 - 1hr AVAIL"
 				],
 				"OandM_1400": [
 					"O&M 1400 - Add P&R lots to Traffic map (DONE)",
-					"O&M 1400 - CREATE sp_GetParkAndRideLots (DONE)",
-					"O&M 1400 - Need map and toolbar icons"
+					"O&M 1400 - CREATE sp_GetParkAndRideLots (DONE)"
+				],
+				"OPT 1403": [
+					"OPT 1403 - Scale map icons based on zoom level. Use provided icons.",
+					"OPT 1403 - 9hrs AVAIL"
 				],
 				"OandM_1415": [
 					"O&M 1415 - Provide error message on Traffic page when Caltrans CMS feed is down (DONE)",
 					"O&M 1415 - Modify CMS Update service to NOT truncate data, compare new data against existing and flag changes (DONE)",
-					"O&M 1415 - Modify 511Traffic to only show non-blank CMS signs on map (DONE)"
+					"O&M 1415 - Modify 511Traffic to only show non-blank CMS signs on map (DONE)",
+					"O&M 1415 - 2hrs AVAIL"
 				],
 				"OPT_1416": [
 					"OPT 1416 - Develop CMS text page for 511 Traffic and TIC use (DONE)",
 					"OPT 1416 - ALTER tblCMSInfo (DONE)",
 					"OPT 1416 - DROP spGetCMSInfo (DONE)",
 					"OPT 1416 - ALTER spUpdateCMSInfo (DONE)",
-					"OPT 1416 - CREATE spGetCMSInfoReport (DONE)"
+					"OPT 1416 - CREATE spGetCMSInfoReport (DONE)",
+					"OPT 1416 - 3hrs AVAIL"
 				],
-				"Parking": [],
-				"Migration": [],
+				"OandM_1425" : [
+					"O&M 1425 - Display the Start Time of an incident on Incident Detail callout box & CDT result section"
+				],
+				"OandM_1434" : [
+					"O&M 1434 - Time on Traffic Map and all incidents should be in Pacific Time"
+				],
+				"OPT 1436" : [
+					"OPT 1436 - Update Twitter Feed API (DONE)",
+					"Twitter - david.b.balmer@saic.com K1zzTwit username=kizzvied"
+				],
 				"Release_Ready": [
+					"OPT 1399",
+					"O&M 1400",
+					"OPT 1403",
 					"O&M 1415",
-					"OPT 1416"
-				],
-				"TRASH": []
+					"OPT 1416",
+					"OPT 1436",
+					"About 511 Parking page update"
+				]
 			};
 		};
 		tasks[TRASH] = []; // empty out the trash
@@ -118,7 +134,7 @@ $(function() {
 		if (name !== TRASH) {
 			var task = prompt('Enter task description');
 			if (task && task !== "") {
-				append_list($('ul#' + name), task);
+				append_list($('ul#' + name.replace('&', 'and')), task);
 				save_tasks();
 			}
 		}
@@ -126,7 +142,7 @@ $(function() {
 
 	$('button').click(function() {
 		var _SHOW = "Show JSON data"
-		var _CLEAR = "Clear JSON data";
+		var _HIDE = "Hide JSON data";
 		if ($(this).text() === _SHOW) {
 			store.get(STORE_KEY, function(obj) {
 				if (obj) { // get saved content
@@ -135,7 +151,7 @@ $(function() {
 					$('#json-data').text('no data').removeClass('hidden');
 				}
 			});
-			$(this).text(_CLEAR);
+			$(this).text(_HIDE);
 		} else {
 			$('#json-data').empty();
 			$(this).text(_SHOW);

@@ -1,4 +1,5 @@
-﻿$(document).ready(function() {
+﻿
+$(document).ready(function() {
 
 	var data = {
 		content : [
@@ -10,7 +11,7 @@
 
 	var template = Handlebars.compile($('#exampleTemplate').html());
 
-	$('#container').html(template(data)); // render template with data
+	$('#container').html(template(data)); // render template with data, {{#each content}} refers to "data.content"
 
 	$('#container').on('click', 'tr:has(td)', function() { // bind click event on data row
 		console.log('clicked on a row');

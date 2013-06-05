@@ -1,0 +1,18 @@
+http://www.aerospaceca.org/
+
+http://www.midway.org/
+
+http://planesoffame.org/index.php?page=history-mission
+
+
+explain how config module will work
+	will display key/value to users
+		send notification to listener
+			for each value
+
+pre-operative appointment on Mar 13 at 8:30 am - takes about 2hrs
+on 1st floor of hospital building, broadway patient discharge entrace
+
+call 510-752-7379 day before surgery (Mar 13) between 11a-1p to find out surgery time.
+
+Go for EKG and urine test one week before surg - Fabiola building past pharmacy
