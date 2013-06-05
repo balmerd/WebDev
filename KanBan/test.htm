@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>KanBan</title>
+	<meta name="author" content="david.b.balmer@saic.com">
+	<meta name="description" content="KanBan board">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:400,500">
+
+	<link rel="stylesheet" href="../css/normalize.min.css">
+	<link rel="stylesheet" href="../css/html5-boilerplate.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/redmond/jquery-ui.css" />
+	<link rel="stylesheet" href="css/test.css?v=1">
+    <!--link rel="stylesheet" href="css/jquery.contextmenu.css"-->
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+	<script src="../js/lawnchair-0.6.1.min.js"></script>
+	<script src="../js/plugins.js"></script>
+
+    <script src="js/kanbanBoard.plugin.js"></script>
+	<script src="js/test.js"></script>
+</head>
+<body>
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">KanBan</a></li>
+			<li><a href="#tabs-2">EDFS</a></li>
+			<li><a href="#tabs-3">Personal</a></li>
+		</ul>
+		<div id="tabs-1">
+			<!--
+			<p>A kanban board utilizes moveable cards to represent categoried work items.&nbsp;&nbsp;Grab a card by the <span class="handle">&nbsp;</span> handle to move it.&nbsp;&nbsp;Drop a card into the TRASH to delete.</p>
+			-->
+			<div id="kanban" class="scrollable">
+				<table>
+					<thead>
+						<tr>
+							<th class="single-button-column">
+								<button id="create-category">New Category</button>
+							</th>
+							<th data-key="TRASH">TRASH</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="single-button-column"></td>
+							<td>
+								<ul class="TRASH sortable connectedSortable"></ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="tabs-2">
+			<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+		</div>
+		<div id="tabs-3">
+			<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+			<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+		</div>
+	</div>
+	
+	<div id="dialog-create-category" title="Create new Category">
+		<p class="validateTips">All fields are required.</p>
+		<form>
+			<fieldset>
+				<label for="name">Category Name</label>
+				<input type="text" name="category-name" id="category-name" class="text ui-widget-content ui-corner-all" />
+			</fieldset>
+		</form>
+	</div>
+	
+	<div id="dialog-delete-category" title="Delete Category">
+		<p>All tasks assigned to this category will be deleted.</p>
+	</div>
+
+	<div id="dialog-create-task" title="Create Task">
+		<p class="validateTips">All fields are required.</p>
+		<form>
+			<fieldset>
+				<label for="name">Task Description</label>
+				<textarea id="new-task-desc" class="text ui-widget-content ui-corner-all"></textarea>
+			</fieldset>
+		</form>
+	</div>
+
+	<div id="dialog-edit-task" title="Edit Task">
+		<p class="validateTips">All fields are required.</p>
+		<form>
+			<fieldset>
+				<label for="name">Task Description</label>
+				<textarea id="edit-task-desc" class="text ui-widget-content ui-corner-all"></textarea>
+			</fieldset>
+		</form>
+	</div>
+
+	<button id="json-button" class="hidden">Show JSON data</button>
+	<div id="json-data" class="hidden"></div>
+
+</body>
+</html>
