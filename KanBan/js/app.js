@@ -30,7 +30,7 @@ $(function() {
 	}
 
 	function appendList(list, task) {
-		list.append('<li><div class="box"><div class="handle">&nbsp;</div>&nbsp;<span class="editable">{0}</span></div></li>'.format(task));
+		list.append('<li><div class="box"><div class="handle">&nbsp;</div>&nbsp;<pre class="editable">{0}</pre></div></li>'.format(task));
 	}
 
 	function createList(col, key, category) {
@@ -159,7 +159,7 @@ $(function() {
 		$('#dialog-delete-category').dialog('option', 'title', 'Delete Category "{0}"'.format(name));
 		$('#dialog-delete-category').dialog('open');
 		return false;
-	}).on('click', 'span.editable', function() {
+	}).on('click', '.editable', function() {
 		selectedTask$ = $(this);
 		$('#edit-task-desc').val(selectedTask$.text());
 		$('#dialog-edit-task').dialog('open');
@@ -378,13 +378,14 @@ $(function() {
 			console.log('deleted ' + key);
 		});
 		// use static content saved from "Show JSON data"
-		amplify.store('MTC Time Reporting', {"Monday":{"name":"Monday","tasks":["Parking - changes for \"TW4 Testing May 6_MTC.docx\" (1hr)","API (7hrs)"]},"Tuesday":{"name":"Tuesday","tasks":["Parking - deploy changes for \"TW4 Testing May 6_MTC.docx\" to trafficweb4 (1hr)","Migration - verify that multi-config change exists in selected apps (1hr)\n","Migration - add multi-config to MY511 Alerting services (2hrs)","Migration - add multi-config to APIs (1hr)","Migration - add multi-config to Ticker service (2hrs)","Migration - add multi-config to Ticker website (1hr)"]},"Wednesday":{"name":"Wednesday","tasks":["Migration - add multi-config to Ticker website (3hrs) (DONE)"]},"Thursday":{"name":"Thursday","tasks":[]},"Friday":{"name":"Friday","tasks":["ELMAHR","EDFS - jsplumb state machine demo","CodeProject - Log Reporting Dashboard for ASP.NET MVC","ELMAH in ASP.Net MVC - http://code.google.com/p/elmah/wiki/MVC","CodeProject - JSNLog - JavaScript logging integrated with ASP.NET and MVC","DotNetCurry - Server Side Timer in an ASP.NET MVC application using SignalR","EDFS Dashboard - query against Alarms, AuditRecords, LogRecords and Event log error messages","Localhost MVC website using SignalR. When user connects and same username exists with a different connectionId, send disconnect message to previous connectionId (DONE)","Change KanBan to use AmplifyJS and ability to add and remove stores (DONE)"]}});
-		amplify.store('EDFS', {"Logging":{"name":"Logging","tasks":["Verify that all errors are trapped and reported"]},"TRF-SQL2":{"name":"TRF-SQL2","tasks":["Reinstall services from latest check-in"]}});
-		amplify.store('Personal', {"ANAM":{"name":"ANAM","tasks":["Gift shop","Design with new logo"]},"BrownBag":{"name":"BrownBag","tasks":["Brown bag session on Ember.js JavaScript MVC framework and Handlebars templating library","Advanced","Nested templates (partials)","www.lukemelia.com for ideas"]},"Todo":{"name":"Todo","tasks":["Cancelled TrueVoice - confirmation # ms15432721201305081944","Cancelled ZenFolio (sent cancel email from vivie_joseph@hotmail.com) will not renew after 9/10/13","Point Blue Parrot Imaging to new site under Island 'ting"]}});
+		amplify.store('Personal', {"ANAM":{"name":"ANAM","tasks":["Gift shop","Design with new logo"]},"BrownBag":{"name":"BrownBag","tasks":["Brown bag session on Ember.js JavaScript MVC framework and Handlebars templating library","Advanced","Nested templates (partials)","www.lukemelia.com for ideas"]},"Todo":{"name":"Todo","tasks":["Cancelled TrueVoice - confirmation # ms15432721201305081944","Cancelled ZenFolio (sent cancel email from vivie_joseph@hotmail.com) will not renew after 9/10/13","Point Blue Parrot Imaging to new site under Island 'ting"]},"WebDev":{"name":"WebDev","tasks":["Change KanBan to use AmplifyJS and ability to add and remove stores (DONE)"]}});
 		amplify.store('511Traffic', {"AWS":{"name":"AWS","tasks":["Amazon deployment instructions in \"My Documents\\_AWS\""]}});
+		amplify.store('EDFS', {"EventUI":{"name":"Event UI","tasks":["Incident - no need to override 30 min interval (so no alarm UI)","A scheduled event (construction or sporting event) (then need UI)"]},"Logging":{"name":"Logging","tasks":["Verify that all errors are trapped and reported (UC) added ajax and window.onerror handling (DONE)"]},"Research":{"name":"Research","tasks":["CodeProject - Log Reporting Dashboard for ASP.NET MVC","CodeProject - JSNLog - JavaScript logging integrated with ASP.NET and MVC","jsplumb state machine demo"]},"Services":{"name":"Services","tasks":["Active/Passive service activation (DONE)","Unit testing of multiple LogProcessor instances (DONE)","Unit testing of single timer based service instance (DONE)","Unit testing of multiple timer based service instances (DONE)"]},"TODO":{"name":"TODO","tasks":["Session Ping (DONE)\nIntegrate into refresh (TBD)","Notify other users when item is being edited (UC see EditedEvents?ids=1501,1504)"]},"Website":{"name":"Website","tasks":["Use unobtrusive ajax for content refresh (DONE)","Refresh and column sorting on UserAccounts (DONE)","EDFS Schedule schema (DONE)","Move start and end date info from EDFSEvent to Schedule (DONE)","Add/Edit Event details"]}});
+		amplify.store('Login', {"API":{"name":"API","tasks":["82d0d010-7660-40d0-bbc0-0a4b331df793"]},"BugTracker":{"name":"BugTracker","tasks":["dbalmer / Saic1234"]},"SVN":{"name":"SVN","tasks":["dbalmer / Saic1234"]},"Staging":{"name":"Staging","tasks":["Staging VPN: 54.215.176.133\ndbalmer / Saic1234\n","UTILS-STG Server for builds: 10.60.81.12\ndbalmer@mtc511 / Saic1234\n"]}});
+		amplify.store('Hosting', {"AAA":{"name":"AAA","tasks":["FInd out what domains are hosted on ANAM and DBALMER"]},"ANAM":{"name":"ANAM","tasks":["Sync with GitHub","Copy files to IslandTing","Export database","Point domains to IslandTing"]},"ANAMDONE":{"name":"ANAM DONE","tasks":[]},"BRIANMLOW":{"name":"BRIANMLOW","tasks":[]},"BRIANMLOWDONE":{"name":"BRIANMLOW DONE","tasks":[]},"DBALMER":{"name":"DBALMER","tasks":[]},"DBALMERDONE":{"name":"DBALMER DONE","tasks":[]}});
 	}
 
 	//restoreData();
-	initializeStores('MTC Time Reporting');
+	initializeStores('Hosting');
 	initialize();
 });

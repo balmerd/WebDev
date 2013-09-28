@@ -44,6 +44,11 @@
 				<a class="button" target="_blank" href="http://localhost/511Traffic2.0/Areas/Parking/testframe.htm">Parking Unit Tests</a>
 			</fieldset>
 			<fieldset>
+				<legend>trafficweb4.511.org (sql2d-2)</legend>
+				<a class="button" target="_blank" href="trafficweb4.511.org">Traffic</a>
+				<a class="button" target="_blank" href="trafficweb4.511.org/Parking">Parking</a>
+			</fieldset>
+			<fieldset>
 				<legend>map1-2.lan.511.org</legend>
 				<a class="button" target="_blank" href="http://trafficweb1.511.org">Traffic</a>
 				<a class="button" target="_blank" href="http://trafficweb1.511.org/testframe.htm">Traffic Unit Tests</a>
@@ -96,7 +101,7 @@
 		</article>
 		<article class="projects hidden">
 			<nav role="navigation" class="side clearfix">
-				<a class="button" target="_blank" href="TaskBoard/index.htm" title="opens in new page">TaskBoard using Lawnchair DOM persistence</a>
+				<a class="button" target="_blank" href="KanBan/index.htm" title="opens in new page">KanBan using AmplifyJS for local storage</a>
 				<a class="button" target="_blank" href="BugList/index.htm" title="opens in new page">BugList</a>
 				<button name="ember" data-url="views/projects/ember/index.htm">Ember.js Notes</button>
 				<a class="button" target="_blank" href="BrownBag/handlebars-example.htm" title="opens in new page">Ember.js Brown Bag</a>
@@ -112,18 +117,20 @@
 		</article>
 		<article class="reference hidden">
 			<nav role="navigation" class="side">
-				<button name="ebooks" data-url="views/reference/index.htm">eBooks</button>
-				<button name="javascript" data-url="views/reference/javascript.htm">JavaScript</button>
 				<button name="aspnet-mvc" data-url="views/reference/aspnet-mvc.htm">ASP.NET MVC</button>
-				<button name="html5-css3" data-url="views/reference/html5-css3.htm">HTML5 and CSS3</button>
-				<button name="csharp-dot-net" data-url="views/reference/csharp-dot-net.htm">C# and .NET</button>
 				<button name="cloud" data-url="views/reference/cloud.htm">Cloud Computing</button>
-				<button name="iis" data-url="views/reference/iis.htm">IIS</button>
-				<button name="security" data-url="views/reference/security.htm">Security</button>
-				<button name="silverlight" data-url="views/reference/silverlight.htm">Silverlight</button>
-				<button name="misc" data-url="views/reference/misc.htm">Miscellaneous</button>
+				<button name="csharp-dot-net" data-url="views/reference/csharp-dot-net.htm">C# and .NET</button>
 				<button name="deployment" data-url="views/reference/deployment.htm">Build and Deployment</button>
 				<button name="docs" data-url="views/reference/docs.htm">Docs</button>
+				<button name="ebooks" data-url="views/reference/index.htm">eBooks</button>
+				<button name="html5-css3" data-url="views/reference/html5-css3.htm">HTML5 and CSS3</button>
+				<button name="iis" data-url="views/reference/iis.htm">IIS</button>
+				<button name="java" data-url="views/reference/java.htm">Java Development</button>
+				<button name="javascript" data-url="views/reference/javascript.htm">JavaScript</button>
+				<button name="misc" data-url="views/reference/misc.htm">Miscellaneous</button>
+				<button name="mobile" data-url="views/reference/mobile.htm">Mobile Development</button>
+				<button name="security" data-url="views/reference/security.htm">Security</button>
+				<button name="silverlight" data-url="views/reference/silverlight.htm">Silverlight</button>
 				<button name="tools" data-url="views/reference/tools.htm">Tools</button>
 				<button name="wordpress" data-url="views/reference/wordpress.htm">WordPress</button>
 			</nav>
@@ -179,49 +186,51 @@
 							contentReady.call(this);
 						});
 						break;
-					case 'PATTERNS':
-					case 'SINGLETON':
 					case 'MODULE':
+					case 'PATTERNS':
 					case 'REVEALING-MODULE':
+					case 'SINGLETON':
 						$('article.patterns div.content').load(contentUrl, function() {
 							$('header span').text('~ Patterns');
 							contentReady.call(this);
 						});
 						break;
-					case 'TECHNIQUES':
-					case 'NAMESPACING':
 					case 'ATTRIBUTE-COMPRESSION':
-					case 'WAIT-FOR-DOM-CONTENT':
 					case 'FIND-EVENT-HANDLERS':
+					case 'NAMESPACING':
 					case 'STRING-BUILDER':
+					case 'TECHNIQUES':
+					case 'WAIT-FOR-DOM-CONTENT':
 						$('article.techniques div.content').load(contentUrl, function() {
 							$('header span').text('~ Techniques');
 							contentReady.call(this);
 						});
 						break;
-					case 'PROJECTS':
-					case 'TEST-RUNNER':
 					case 'EMBER':
 					case 'EMBER-REFERENCES':
+					case 'PROJECTS':
+					case 'TEST-RUNNER':
 						$('article.projects div.content').load(contentUrl, function() {
 							$('header span').text('~ Projects');
 							contentReady.call(this);
 						});
 						break;
-					case 'REFERENCE':
-					case 'TOOLS':
-					case 'EBOOKS':
-					case 'JAVASCRIPT':
 					case 'ASPNET-MVC':
-					case 'HTML5-CSS3':
 					case 'CSHARP-DOT-NET':
 					case 'CLOUD':
-					case 'IIS':
-					case 'SECURITY':
-					case 'SILVERLIGHT':
-					case 'MISC':
 					case 'DEPLOYMENT':
 					case 'DOCS':
+					case 'EBOOKS':
+					case 'HTML5-CSS3':
+					case 'IIS':
+					case 'JAVA':
+					case 'JAVASCRIPT':
+					case 'MISC':
+					case 'MOBILE':
+					case 'REFERENCE':
+					case 'SECURITY':
+					case 'SILVERLIGHT':
+					case 'TOOLS':
 					case 'WORDPRESS':
 						$('article.reference div.content').load(contentUrl, function() {
 							$('header span').text('~ Reference');

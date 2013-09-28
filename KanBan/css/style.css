@@ -16,6 +16,10 @@ input.text {
 	width: 95%;
 	padding: 0.4em;
 }
+pre {
+	display: inline;
+	font: inherit;
+}
 textarea.text {
 	height: 12em;
 	margin-bottom: 12px;
