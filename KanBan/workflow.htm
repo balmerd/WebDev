@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	<link href="http://civicmedia.net/edfs/prototype_new/css/normalize.css" rel="stylesheet">
+	<link href="http://civicmedia.net/edfs/prototype_new/css/base.css" rel="stylesheet">
+	<link href="http://civicmedia.net/edfs/prototype_new/css/jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+<form>
+	<div class="table twoColumn">
+		<table id="systemWorkflow">
+			<colgroup>
+			<col class="span1" />
+			<col class="span2" />
+			<col class="span3" />
+			</colgroup>
+			<tbody>
+				<tr>
+					<th class="entryInfo superHeaders"> Workflow Order </th>
+					<th class="entryInfo superHeaders"> From State </th>
+					<th class="entryInfo superHeaders"> Action </th>
+					<th class="entryInfo superHeaders"> Transitions to State </th>
+					<th class="entryInfo superHeaders"> </th>
+				</tr>
+				<tr>
+					<td>
+						<p>
+							<select name="statetype1">
+								<option>Begin</option>
+								<option>Intermediate</option>
+								<option>End</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="fromstate1">
+								<option>New</option>
+								<option>Published</option>
+								<option>Closed</option>
+								<option>Archived</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="action1">
+								<option>Publish</option>
+								<option>Update</option>
+								<option>Close</option>
+								<option>Archive</option>
+								<option>Discard</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p disabled="disabled">
+							Published
+						</p>
+					</td>
+					<td>
+						<div class="buttons">
+							<a class="smallBtn redBtn" href="#">REMOVE</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>
+							<select name="statetype2">
+								<option>Begin</option>
+								<option>Intermediate</option>
+								<option>End</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="fromstate2">
+								<option>New</option>
+								<option>Published</option>
+								<option>Closed</option>
+								<option>Archived</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="action2">
+								<option>Publish</option>
+								<option>Update</option>
+								<option selected="selected">Close</option>
+								<option>Archive</option>
+								<option>Discard</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p disabled="disabled">
+							Closed
+						</p>
+					</td>
+					<td>
+						<div class="buttons">
+							<a class="smallBtn redBtn" href="#">REMOVE</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>
+							<select name="statetype3">
+								<option>Begin</option>
+								<option>Intermediate</option>
+								<option>End</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="fromstate3">
+								<option>New</option>
+								<option>Published</option>
+								<option>Closed</option>
+								<option>Archived</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="action3">
+								<option>Publish</option>
+								<option>Update</option>
+								<option>Close</option>
+								<option>Archive</option>
+								<option selected="selected">Discard</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p disabled="disabled">
+							Discarded
+						</p>
+					</td>
+					<td>
+						<div class="buttons">
+							<a class="smallBtn redBtn" href="#">REMOVE</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>
+							<select name="statetype4">
+								<option>Begin</option>
+								<option selected="selected">Intermediate</option>
+								<option>End</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="fromstate4">
+								<option>New</option>
+								<option selected="selected">Published</option>
+								<option>Closed</option>
+								<option>Archived</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="action4">
+								<option>Publish</option>
+								<option selected="selected">Update</option>
+								<option>Close</option>
+								<option>Archive</option>
+								<option>Discard</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p disabled="disabled">
+							Published
+						</p>
+					</td>
+					<td>
+						<div class="buttons">
+							<a class="smallBtn redBtn" href="#">REMOVE</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>
+							<select name="statetype5">
+								<option>Begin</option>
+								<option selected="selected">Intermediate</option>
+								<option>End</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="fromstate5">
+								<option>New</option>
+								<option selected="selected">Published</option>
+								<option>Closed</option>
+								<option>Archived</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="action5">
+								<option>Publish</option>
+								<option>Update</option>
+								<option selected="selected">Close</option>
+								<option>Archive</option>
+								<option>Discard</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p disabled="disabled">
+							Closed
+						</p>
+					</td>
+					<td>
+						<div class="buttons">
+							<a class="smallBtn redBtn" href="#">REMOVE</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>
+							<select name="statetype6">
+								<option>Begin</option>
+								<option>Intermediate</option>
+								<option selected="selected">End</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="fromstate6">
+								<option>New</option>
+								<option>Published</option>
+								<option selected="selected">Closed</option>
+								<option>Archived</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p>
+							<select name="action6">
+								<option>Publish</option>
+								<option>Update</option>
+								<option>Close</option>
+								<option selected="selected">Archive</option>
+								<option>Discard</option>
+							</select>
+						</p>
+					</td>
+					<td>
+						<p disabled="disabled">
+							Archived
+						</p>
+					</td>
+					<td>
+						<div class="buttons">
+							<a class="smallBtn redBtn" href="#">REMOVE</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4"></td>
+					<td>
+						<div class="buttons">
+							<a href="#" class="smallBtn lightGreenBtn">ADD</a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!--end .tableWrapper-->
+</form>
+</body>
+</html>
